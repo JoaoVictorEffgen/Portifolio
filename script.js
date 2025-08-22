@@ -590,4 +590,41 @@ document.addEventListener('click', function(e) {
     }
 });
 
+// Function to copy donation link
+function copyDonationLink() {
+    const link = 'https://nubank.com.br/cobrar/b9fsn/68a8e39d-4f77-8e1b-343048b961a5';
+    
+    // Try to use the modern clipboard API
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(link).then(() => {
+            showNotification('Link copiado com sucesso! 📋', 'success');
+        }).catch(() => {
+            fallbackCopyTextToClipboard(link);
+        });
+    } else {
+        fallbackCopyTextToClipboard(link);
+    }
+}
+
+// Fallback method for older browsers
+function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showNotification('Link copiado com sucesso! 📋', 'success');
+    } catch (err) {
+        showNotification('Erro ao copiar link. Tente manualmente.', 'error');
+    }
+    
+    document.body.removeChild(textArea);
+}
+
 console.log('🎨 Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! ☕ Café flutuante ativo!'); 

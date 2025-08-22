@@ -254,8 +254,27 @@
     <div id="coffee-modal" class="coffee-modal">
         <div class="coffee-card">
             <div class="coffee-icon">☕</div>
-            <h3>Sou viciado em café!</h3>
-            <p>Aceito doação de café ☕</p>
+            <h3>Sou viciado em café, aceito doação!</h3>
+            <p>Se você gostou do meu trabalho e quer me ajudar a manter o café fluindo... ☕</p>
+            
+            <div class="donation-section">
+                <div class="qr-code-container">
+                    <img src="imagem/Qrcode.jpeg" alt="QR Code para doação" class="qr-code">
+                    <p class="qr-label">Escaneie o QR Code</p>
+                </div>
+                
+                <div class="link-container">
+                    <p class="link-label">Ou use o link direto:</p>
+                    <a href="https://nubank.com.br/cobrar/b9fsn/68a8e39d-4f77-8e1b-343048b961a5" 
+                       target="_blank" 
+                       class="donation-link">
+                        <span class="link-text">Link para doação</span>
+                        <span class="copy-icon">📋</span>
+                    </a>
+                    <button class="copy-link-btn" onclick="copyDonationLink()">Copiar Link</button>
+                </div>
+            </div>
+            
             <button class="close-coffee" onclick="closeCoffeeModal()">Fechar</button>
         </div>
     </div>
