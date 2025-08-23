@@ -627,27 +627,38 @@ function fallbackCopyTextToClipboard(text) {
     document.body.removeChild(textArea);
 }
 
-// Auto-rotating about section
-let currentSlideIndex = 0;
-const slides = ['aboutSlide', 'formationSlide'];
 
-function rotateAboutSection() {
-    const currentSlide = document.getElementById(slides[currentSlideIndex]);
-    const nextSlideIndex = (currentSlideIndex + 1) % slides.length;
-    const nextSlide = document.getElementById(slides[nextSlideIndex]);
-    
-    // Add exit class to current slide
-    currentSlide.classList.add('exit');
-    
-    // After transition, switch slides
-    setTimeout(() => {
-        currentSlide.classList.remove('active', 'exit');
-        nextSlide.classList.add('active');
-        currentSlideIndex = nextSlideIndex;
-    }, 400);
+
+// Sistema de espelho para seção About
+let currentContent = 'about';
+const aboutMain = document.getElementById('aboutMain');
+const formationSection = document.getElementById('formationSection');
+
+function toggleContent() {
+    if (currentContent === 'about') {
+        // Transição para formações
+        aboutMain.classList.add('exit');
+        aboutMain.classList.remove('active');
+        
+        setTimeout(() => {
+            formationSection.classList.add('active');
+            formationSection.classList.remove('exit');
+            currentContent = 'formation';
+        }, 300);
+    } else {
+        // Transição para sobre mim
+        formationSection.classList.add('exit');
+        formationSection.classList.remove('active');
+        
+        setTimeout(() => {
+            aboutMain.classList.add('active');
+            aboutMain.classList.remove('exit');
+            currentContent = 'about';
+        }, 300);
+    }
 }
 
-// Start about section rotation every 5.5 seconds
-setInterval(rotateAboutSection, 5500);
+// Alternar conteúdo a cada 6 segundos
+setInterval(toggleContent, 6000);
 
-console.log('🎨 Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! ☕ Café flutuante ativo! 🔄 Rotação automática ativa!'); 
+console.log('🎨 Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! ☕ Café flutuante ativo! 🔄 Sistema de espelho ativo!'); 
