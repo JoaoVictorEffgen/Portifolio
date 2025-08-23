@@ -101,10 +101,11 @@ body {
 /* Hero Section */
 .hero {
     padding: 120px 0 80px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     min-height: 100vh;
 }
 
@@ -131,6 +132,9 @@ body {
 .hero-buttons {
     display: flex;
     gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .btn {
@@ -167,39 +171,81 @@ body {
     transform: translateY(-2px);
 }
 
+/* Hero Profile */
+.hero-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    object-fit: cover;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+    border-color: var(--secondary-color);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
 /* Hero Visual */
 .hero-visual {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 3rem;
+    width: 100%;
 }
 
 .floating-cards {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 2rem;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    flex-wrap: wrap;
 }
 
 .floating-card {
     background: rgba(30, 41, 59, 0.3);
     border: 1px solid var(--border-color);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 16px;
     box-shadow: 0 20px 40px var(--shadow-color);
     text-align: center;
-    transition: all 0.3s ease;
-    animation: float 6s ease-in-out infinite;
-    min-width: 200px;
+    transition: all 0.5s ease;
+    animation: float 4s ease-in-out infinite, swapPositions 12s ease-in-out infinite;
+    width: 200px;
+    flex: 0 1 200px;
     backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.floating-card:nth-child(1) {
+    animation: float 4s ease-in-out infinite, swapPositions1 10s ease-in-out infinite;
+    animation-delay: 0s, 0s;
 }
 
 .floating-card:nth-child(2) {
-    animation-delay: -2s;
+    animation: float 4s ease-in-out infinite, swapPositions2 10s ease-in-out infinite;
+    animation-delay: -1.3s, 0s;
 }
 
 .floating-card:nth-child(3) {
-    animation-delay: -4s;
+    animation: float 4s ease-in-out infinite, swapPositions3 10s ease-in-out infinite;
+    animation-delay: -2.6s, 0s;
 }
 
 .floating-card:hover {
@@ -208,13 +254,22 @@ body {
 }
 
 .card-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
 }
 
 .floating-card h3 {
     color: var(--text-primary);
     font-weight: 600;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    font-size: 1.1rem;
 }
 
 /* Animações dos Cards */
@@ -231,6 +286,24 @@ body {
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
+}
+
+@keyframes swapPositions1 {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    33% { transform: translateX(220px) translateY(-15px); }
+    66% { transform: translateX(110px) translateY(-10px); }
+}
+
+@keyframes swapPositions2 {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    33% { transform: translateX(-110px) translateY(-10px); }
+    66% { transform: translateX(110px) translateY(-15px); }
+}
+
+@keyframes swapPositions3 {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    33% { transform: translateX(-110px) translateY(-15px); }
+    66% { transform: translateX(-220px) translateY(-10px); }
 }
 
 
