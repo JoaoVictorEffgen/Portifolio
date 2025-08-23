@@ -14,6 +14,119 @@
     --gradient-end: #1e40af;
 }
 
+/* Space Background */
+.space-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0f3460);
+    overflow: hidden;
+    animation: spaceColorShift 15s ease-in-out infinite;
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="star" cx="50%" cy="50%"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:1" /><stop offset="100%" style="stop-color:%23ffffff;stop-opacity:0" /></radialGradient></defs><circle cx="500" cy="500" r="1" fill="url(%23star)"/></svg>') repeat;
+    animation: stars 20s linear infinite;
+}
+
+.twinkling {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="star" cx="50%" cy="50%"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:0.8" /><stop offset="50%" style="stop-color:%23ffffff;stop-opacity:0.4" /><stop offset="100%" style="stop-color:%23ffffff;stop-opacity:0" /></radialGradient></defs><circle cx="200" cy="200" r="0.5" fill="url(%23star)"/><circle cx="800" cy="300" r="0.3" fill="url(%23star)"/><circle cx="400" cy="700" r="0.7" fill="url(%23star)"/><circle cx="900" cy="800" r="0.4" fill="url(%23star)"/></svg>') no-repeat;
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="nebula" cx="50%" cy="50%"><stop offset="0%" style="stop-color:%233b82f6;stop-opacity:0.15" /><stop offset="100%" style="stop-color:%233b82f6;stop-opacity:0" /></radialGradient></defs><ellipse cx="300" cy="400" rx="150" ry="80" fill="url(%23nebula)"/><ellipse cx="700" cy="600" rx="120" ry="60" fill="url(%23nebula)"/></svg>') no-repeat;
+    animation: nebula 30s ease-in-out infinite;
+}
+
+.shooting-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: linear-gradient(90deg, #ffffff, #60a5fa, #3b82f6, transparent);
+    border-radius: 50%;
+    animation: shooting-star 4s linear infinite;
+    box-shadow: 0 0 6px #ffffff, 0 0 12px #60a5fa, 0 0 18px #3b82f6;
+}
+
+.shooting-star:nth-child(1) { top: 15%; left: 5%; animation-delay: 0s; }
+.shooting-star:nth-child(2) { top: 25%; left: 85%; animation-delay: 1.5s; }
+.shooting-star:nth-child(3) { top: 35%; left: 15%; animation-delay: 3s; }
+.shooting-star:nth-child(4) { top: 45%; left: 75%; animation-delay: 4.5s; }
+.shooting-star:nth-child(5) { top: 55%; left: 25%; animation-delay: 6s; }
+.shooting-star:nth-child(6) { top: 65%; left: 65%; animation-delay: 7.5s; }
+.shooting-star:nth-child(7) { top: 75%; left: 35%; animation-delay: 9s; }
+.shooting-star:nth-child(8) { top: 85%; left: 55%; animation-delay: 10.5s; }
+.shooting-star:nth-child(9) { top: 95%; left: 45%; animation-delay: 12s; }
+.shooting-star:nth-child(10) { top: 5%; left: 95%; animation-delay: 13.5s; }
+
+@keyframes stars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-1000px); }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+@keyframes nebula {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(1.1); }
+}
+
+@keyframes shooting-star {
+    0% { 
+        transform: translateX(0) translateY(0) rotate(45deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateX(200px) translateY(200px) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+@keyframes spaceColorShift {
+    0% {
+        background: linear-gradient(45deg, #0a0a0a, #0f172a, #1e293b, #1e40af);
+    }
+    33% {
+        background: linear-gradient(45deg, #0f172a, #1e293b, #334155, #3b82f6);
+    }
+    66% {
+        background: linear-gradient(45deg, #1e293b, #334155, #475569, #60a5fa);
+    }
+    100% {
+        background: linear-gradient(45deg, #0a0a0a, #0f172a, #1e293b, #1e40af);
+    }
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -25,7 +138,7 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
-    background: var(--background-color);
+    background: transparent;
     transition: all 0.3s ease;
 }
 
