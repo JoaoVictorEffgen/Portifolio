@@ -450,16 +450,104 @@ body {
 
 .about-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     align-items: center;
 }
 
-.about-text p {
+/* Sistema de Rotação Automática */
+.about-rotating-content {
+    position: relative;
+    min-height: 300px;
+    overflow: hidden;
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+.about-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.about-slide.exit {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.about-slide h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.about-slide p {
     font-size: 1.1rem;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
-    line-height: 1.8;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+@media (max-width: 768px) {
+    .about-rotating-content {
+        min-height: 280px;
+        padding: 1.5rem;
+    }
+    
+    .about-slide {
+        padding: 1.5rem;
+    }
+    
+    .about-slide h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .about-slide p {
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.5;
+    }
+}
+
+
+
+
+
+.about-text p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .about-text p {
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.5;
+    }
 }
 
 .skills h3 {

@@ -627,4 +627,27 @@ function fallbackCopyTextToClipboard(text) {
     document.body.removeChild(textArea);
 }
 
-console.log('🎨 Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! ☕ Café flutuante ativo!'); 
+// Auto-rotating about section
+let currentSlideIndex = 0;
+const slides = ['aboutSlide', 'formationSlide'];
+
+function rotateAboutSection() {
+    const currentSlide = document.getElementById(slides[currentSlideIndex]);
+    const nextSlideIndex = (currentSlideIndex + 1) % slides.length;
+    const nextSlide = document.getElementById(slides[nextSlideIndex]);
+    
+    // Add exit class to current slide
+    currentSlide.classList.add('exit');
+    
+    // After transition, switch slides
+    setTimeout(() => {
+        currentSlide.classList.remove('active', 'exit');
+        nextSlide.classList.add('active');
+        currentSlideIndex = nextSlideIndex;
+    }, 400);
+}
+
+// Start about section rotation every 5.5 seconds
+setInterval(rotateAboutSection, 5500);
+
+console.log('🎨 Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! ☕ Café flutuante ativo! 🔄 Rotação automática ativa!'); 
