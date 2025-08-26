@@ -486,8 +486,11 @@ body {
         max-width: 95%;
     }
     
-    .mirror-content {
-        min-height: 180px;
+
+    
+    .skills {
+        max-width: 100%;
+        padding: 0 1rem;
     }
     
     .skill-grid {
@@ -499,12 +502,21 @@ body {
         margin: 1rem auto 1.5rem auto;
     }
     
-    .skill-square {
-        min-height: 80px;
+    .skill-flip-card {
+        height: 80px;
+    }
+    
+    .skill-flip-front, .skill-flip-back {
         padding: 0.8rem;
-        width: 100%;
-        max-width: 130px;
-        justify-self: center;
+    }
+    
+    .skill-percentage {
+        font-size: 1.5rem;
+    }
+    
+    .skill-usage {
+        font-size: 0.6rem;
+        max-width: 70px;
     }
     
     .skill-icon {
@@ -517,6 +529,12 @@ body {
     }
 }
 
+.skills {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .skills h3 {
     margin-bottom: 1rem;
     color: var(--text-primary);
@@ -527,30 +545,8 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    margin: 1rem 0 1.5rem 0;
-}
-
-.skill-square {
-    background: rgba(30, 41, 59, 0.3);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 15px var(--shadow-color);
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.skill-square:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px var(--shadow-color);
-    border-color: var(--primary-color);
-    background: rgba(30, 41, 59, 0.5);
+    margin: 1rem auto 1.5rem auto;
+    max-width: 600px;
 }
 
 .skill-icon {
@@ -567,79 +563,12 @@ body {
     line-height: 1.2;
 }
 
-.mirror-content {
-    position: relative;
-    min-height: 200px;
-    overflow: hidden;
-}
-
-.about-main, .formation-section {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    transform: translateX(100%);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    visibility: hidden;
-    padding: 2rem;
-    background: rgba(30, 41, 59, 0.3);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px var(--shadow-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.about-main.active, .formation-section.active {
-    opacity: 1;
-    transform: translateX(0);
-    visibility: visible;
-}
-
-.about-main.exit, .formation-section.exit {
-    opacity: 0;
-    transform: translateX(-100%);
-    visibility: hidden;
-}
-
-.formation-section {
-    margin: 0;
-    position: relative;
-    overflow: hidden;
-}
 
 
 
-.about-main h3, .formation-section h3 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    font-weight: 700;
-    margin-top: 0;
-}
 
-.formation-content p {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.8rem;
-    text-align: center;
-    line-height: 1.5;
-    transition: all 0.3s ease;
-    padding: 0.5rem;
-    border-radius: 8px;
-}
 
-.formation-content p:hover {
-    color: var(--primary-color);
-    background: rgba(59, 130, 246, 0.1);
-    transform: translateX(5px);
-}
+
 
 .about-stats {
     display: grid;
@@ -1180,8 +1109,180 @@ body {
     font-size: 1.2rem;
 }
 
-/* Responsive Design */
+/* Flip Card Styles */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 400px;
+    perspective: 1000px;
+    margin-bottom: 4rem;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Hover effect to flip the card (Desktop) */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Manual flip for mobile */
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.flip-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.flip-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
+
+
+.formation-content p {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border-left: 3px solid var(--primary-color);
+}
+
+/* Skill Flip Cards */
+.skill-flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 100px;
+    perspective: 1000px;
+}
+
+.skill-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.skill-flip-card:hover .skill-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.skill-flip-card.flipped .skill-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.skill-flip-front, .skill-flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.skill-flip-back {
+    transform: rotateY(180deg);
+    background: rgba(30, 41, 59, 0.5);
+    border-color: var(--primary-color);
+}
+
+.skill-percentage {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.skill-usage {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.2;
+    max-width: 90px;
+}
+
+/* Hover effect for better UX */
+.flip-card:hover .flip-card-inner {
+    transform: scale(1.02);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg) scale(1.02);
+}
+
+/* Mobile responsive adjustments */
 @media (max-width: 768px) {
+    .flip-card {
+        height: 350px;
+        margin-bottom: 3rem;
+    }
+    
+    .flip-card-front, .flip-card-back {
+        padding: 1.5rem;
+    }
+    
+    .flip-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .flip-card p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+
+    
+    /* Responsive Design */
     .hero {
         grid-template-columns: 1fr;
         text-align: center;

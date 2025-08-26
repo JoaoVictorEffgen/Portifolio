@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     startColorAnimation();
     setupScrollAnimations();
     setupFormHandling();
+    initFlipCard(); // Initialize flip card
 });
 
 // Initialize portfolio with first color scheme
@@ -629,36 +630,61 @@ function fallbackCopyTextToClipboard(text) {
 
 
 
-// Sistema de espelho para seção About
-let currentContent = 'about';
-const aboutMain = document.getElementById('aboutMain');
-const formationSection = document.getElementById('formationSection');
-
-function toggleContent() {
-    if (currentContent === 'about') {
-        // Transição para formações
-        aboutMain.classList.add('exit');
-        aboutMain.classList.remove('active');
-        
-        setTimeout(() => {
-            formationSection.classList.add('active');
-            formationSection.classList.remove('exit');
-            currentContent = 'formation';
-        }, 300);
-    } else {
-        // Transição para sobre mim
-        formationSection.classList.add('exit');
-        formationSection.classList.remove('active');
-        
-        setTimeout(() => {
-            aboutMain.classList.add('active');
-            aboutMain.classList.remove('exit');
-            currentContent = 'about';
-        }, 300);
-    }
+// Flip Card functionality with mobile support
+function initFlipCard() {
+    const flipCards = document.querySelectorAll('.flip-card, .skill-flip-card');
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    flipCards.forEach(card => {
+        if (isMobile) {
+            // Mobile: Use touch/click events
+            card.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                this.classList.toggle('flipped');
+            });
+            
+            card.addEventListener('click', function(e) {
+                // Prevent double triggering on mobile
+                if (isMobile) {
+                    e.preventDefault();
+                    this.classList.toggle('flipped');
+                }
+            });
+            
+            // Add mobile hint
+            const hint = document.createElement('div');
+            hint.className = 'mobile-hint';
+            hint.innerHTML = '👆 Toque para girar';
+            hint.style.cssText = `
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(255, 255, 255, 0.2);
+                color: var(--primary-color);
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 0.8rem;
+                z-index: 10;
+            `;
+            
+            if (card.classList.contains('flip-card')) {
+                card.style.position = 'relative';
+                card.appendChild(hint);
+            }
+        }
+        // Desktop: CSS hover handles the flip automatically
+    });
+    
+    console.log(`🎴 Flip Cards ativos! ${isMobile ? 'Modo Mobile (toque)' : 'Modo Desktop (hover)'}`);
 }
 
-// Alternar conteúdo a cada 6 segundos
-setInterval(toggleContent, 6000);
+// Initialize flip card when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initFlipCard();
+    
+    // No more auto-flip or click functionality
+    // Cards flip automatically on hover
+});
 
-console.log('🎨 Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! ☕ Café flutuante ativo! 🔄 Sistema de espelho ativo!'); 
+console.log('🎨 Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! ☕ Café flutuante ativo! 🎴 Flip Cards com hover (desktop) e toque (mobile) ativos!'); 
