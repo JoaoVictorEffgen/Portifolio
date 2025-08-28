@@ -229,109 +229,32 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Typing Animation */
-.typing-text {
-    display: inline-block;
-    overflow: hidden;
+/* Hero Title Text - Efeito Máquina de Escrever */
+.hero-title {
+    color: var(--primary-color);
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
+    margin: 0 auto;
+    text-align: center;
     white-space: nowrap;
-    border-right: 2px solid transparent;
-    /* Removida a animação CSS para ser controlada pelo JavaScript */
+    overflow: hidden;
+    width: 0;
+    animation: type 3s steps(25, end) forwards;
+    border-right: 2px solid var(--primary-color);
 }
 
-.cursor {
-    display: inline-block;
-    animation: blink 1s infinite;
-    color: var(--primary-color);
-    font-weight: bold;
-}
-
-/* Wave Text Effect */
-.wave-text {
-    display: inline-block;
-    position: relative;
-}
-
-.wave-text span {
-    display: inline-block;
-    font-size: 3.5rem;
-    font-weight: 700;
-    animation: wave 2s ease-in-out infinite;
-    color: var(--primary-color);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    margin: 0 1px;
-    line-height: 1;
-    transform-origin: center bottom;
-    will-change: transform;
-    backface-visibility: hidden;
-}
-
-/* Aplicação específica dos delays para cada letra */
-.wave-text span:nth-child(1) { animation-delay: 0s !important; }
-.wave-text span:nth-child(2) { animation-delay: 0.1s !important; }
-.wave-text span:nth-child(3) { animation-delay: 0.2s !important; }
-.wave-text span:nth-child(4) { animation-delay: 0.3s !important; }
-.wave-text span:nth-child(5) { animation-delay: 0.4s !important; }
-.wave-text span:nth-child(6) { animation-delay: 0.5s !important; }
-.wave-text span:nth-child(7) { animation-delay: 0.6s !important; }
-.wave-text span:nth-child(8) { animation-delay: 0.7s !important; }
-.wave-text span:nth-child(9) { animation-delay: 0.8s !important; }
-.wave-text span:nth-child(10) { animation-delay: 0.9s !important; }
-.wave-text span:nth-child(11) { animation-delay: 1.0s !important; }
-
-/* Garantir que a animação seja aplicada */
-.wave-text span.wave-animated {
-    animation-play-state: running !important;
-}
-
-/* Debug: mostrar que os spans estão sendo animados */
-.wave-text span {
-    position: relative;
-}
-
-.wave-text span::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    width: 4px;
-    height: 4px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    transform: translateX(-50%);
-    opacity: 0.7;
-}
-
-@keyframes wave {
-    0%, 100% {
-        transform: translateY(0) scale(1);
+@keyframes type {
+    0% {
+        width: 0;
     }
-    25% {
-        transform: translateY(-15px) scale(1.05);
+    1%, 99% {
+        border-right: 2px solid var(--primary-color);
     }
-    50% {
-        transform: translateY(-30px) scale(1.1);
+    100% {
+        width: 100%;
+        border-right: none;
     }
-    75% {
-        transform: translateY(-15px) scale(1.05);
-    }
-}
-
-/* Removida a keyframe typing pois agora é controlada pelo JavaScript */
-
-@keyframes blink {
-    0%, 50% {
-        opacity: 1;
-    }
-    51%, 100% {
-        opacity: 0;
-    }
-}
-
-.highlight {
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .hero-subtitle {

@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initFlipCard(); // Initialize flip card
     
     // Delay para garantir que o DOM esteja pronto
-    setTimeout(() => {
-        startWaveAnimation(); // Start wave animation
-    }, 100);
+    // setTimeout(() => {
+    //     startTypingAnimation(); // Start typing animation
+    // }, 100);
 });
 
 // Initialize portfolio with first color scheme
@@ -645,56 +645,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cards flip automatically on hover
 });
 
-// Wave Text Animation Function
-function startWaveAnimation() {
-    const waveText = document.getElementById('wave-text');
-    if (!waveText) {
-        console.log('❌ Elemento wave-text não encontrado');
-        return;
-    }
-    
-    // Verifica se já existem spans (HTML já foi aplicado)
-    const existingSpans = waveText.querySelectorAll('span');
-    if (existingSpans.length > 0) {
-        console.log('🌊 Efeito ondulado já aplicado via HTML:', existingSpans.length, 'spans encontrados');
-        
-        // Força a aplicação da animação aos spans existentes
-        existingSpans.forEach((span, index) => {
-            // Remove qualquer animação existente
-            span.style.animation = 'none';
-            
-            // Força um reflow
-            span.offsetHeight;
-            
-            // Aplica a nova animação
-            span.style.animation = `wave 2s ease-in-out infinite ${index * 0.1}s`;
-            
-            // Adiciona classe para debug
-            span.classList.add('wave-animated');
-        });
-        
-        console.log('✅ Animação ondulada aplicada com sucesso!');
-        return;
-    }
-    
-    // Fallback: se não houver spans, cria dinamicamente
-    const text = 'João Victor';
-    waveText.innerHTML = '';
-    for (let i = 0; i < text.length; i++) {
-        const span = document.createElement('span');
-        span.textContent = text.charAt(i);
-        span.style.animationDelay = `${i * 0.1}s`;
-        span.style.animation = `wave 2s ease-in-out infinite ${i * 0.1}s`;
-        waveText.appendChild(span);
-    }
-    
-    console.log('🌊 Efeito ondulado aplicado dinamicamente:', text);
-    console.log('📝 Número de spans criados:', waveText.children.length);
-}
+// Typing Text Animation Function - Removida, agora usando CSS puro
+// function startTypingAnimation() {
+//     const typingText = document.getElementById('typing-text');
+//     if (!typingText) {
+//         console.log('❌ Elemento typing-text não encontrado');
+//         return;
+//     }
+//     
+//     const text = 'Olá, eu sou João Victor';
+//     let index = 0;
+//     
+//     // Limpa o texto inicial
+//     typingText.textContent = '';
+//     
+//     // Função para adicionar letra por letra
+//     function typeNextChar() {
+//         if (index < text.length) {
+//             typingText.textContent += text.charAt(index);
+//             index++;
+//             setTimeout(typeNextChar, 120); // Delay de 120ms entre cada letra (mais rápido para texto maior)
+//         }
+//     }
+//     
+//     // Inicia a animação
+//     setTimeout(typeNextChar, 500); // Delay inicial de 500ms
+//     
+//     console.log('⌨️ Efeito de máquina de escrever iniciado:', text);
+// }
 
-// Typing Animation Function (mantida para compatibilidade)
-function startTypingAnimation() {
-    startWaveAnimation(); // Usa o efeito ondulado em vez da digitação
-}
+// Função de compatibilidade removida - agora temos o efeito real de máquina de escrever
 
-    console.log('✨ Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! 🎴 Flip Cards com hover (desktop) e toque (mobile) ativos!'); 
+    console.log('✨ Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! ⌨️ Efeito de máquina de escrever CSS ativo! 🎴 Flip Cards com hover (desktop) e toque (mobile) ativos!'); 
