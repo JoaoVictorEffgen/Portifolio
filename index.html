@@ -47,7 +47,7 @@
             <div class="hero-content">
                 <div class="hero-profile">
                     <img src="imagem/Meu eu.png" alt="João Victor Effgen" class="profile-image">
-                    <h1 class="hero-title">Olá, eu sou <span class="highlight">João Victor</span></h1>
+                    <h1 class="hero-title">Olá, eu sou <span class="highlight"><span class="wave-text" id="wave-text"><span style="animation-delay: 0s;">J</span><span style="animation-delay: 0.1s;">o</span><span style="animation-delay: 0.2s;">ã</span><span style="animation-delay: 0.3s;">o</span><span style="animation-delay: 0.4s;">&nbsp;</span><span style="animation-delay: 0.5s;">V</span><span style="animation-delay: 0.6s;">i</span><span style="animation-delay: 0.7s;">c</span><span style="animation-delay: 0.8s;">t</span><span style="animation-delay: 0.9s;">o</span><span style="animation-delay: 1.0s;">r</span></span><span class="cursor">|</span></span></h1>
                 </div>
                 <p class="hero-subtitle">Desenvolvedor Full Stack & Mobile</p>
                 <div class="hero-buttons">
@@ -55,22 +55,7 @@
                     <button class="btn btn-secondary">Download CV</button>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="floating-cards">
-                    <div class="floating-card">
-                        <div class="card-icon">💻</div>
-                        <h3>Web</h3>
-                    </div>
-                    <div class="floating-card">
-                        <div class="card-icon">📱</div>
-                        <h3>Mobile</h3>
-                    </div>
-                    <div class="floating-card">
-                        <div class="card-icon">🖥️</div>
-                        <h3>Desktop</h3>
-                    </div>
-                </div>
-            </div>
+            <!-- Cards flutuantes removidos -->
         </section>
 
         <!-- About Section -->
@@ -201,20 +186,7 @@
                         </div>
                     </div>
                     
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">4+</div>
-                            <div class="stat-label">Projetos Concluídos</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">3</div>
-                            <div class="stat-label">Plataformas (Mobile/Web/Desktop)</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Projetos Funcionais</div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
@@ -291,10 +263,26 @@
                         <div class="project-links">
                             <a href="https://github.com/JoaoVictorEffgen/VSC" target="_blank" class="project-link">GitHub</a>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                                         </div>
+                 </div>
+             </div>
+             
+             <!-- Estatísticas Compactas -->
+             <div class="project-stats">
+                 <div class="stat-compact">
+                     <span class="stat-number-compact">4+</span>
+                     <span class="stat-label-compact">Projetos Concluídos</span>
+                 </div>
+                 <div class="stat-compact">
+                     <span class="stat-number-compact">3</span>
+                     <span class="stat-label-compact">Plataformas</span>
+                 </div>
+                 <div class="stat-compact">
+                     <span class="stat-number-compact">100%</span>
+                     <span class="stat-label-compact">Funcionais</span>
+                 </div>
+             </div>
+         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
@@ -303,42 +291,7 @@
                 <div class="contact-info">
                     <h3>Vamos conversar!</h3>
                     <p>Estou sempre aberto a novas oportunidades e colaborações interessantes.</p>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <span class="contact-icon">📧</span>
-                            <span>joaoeffgens@gmail.com</span>
-                        </div>
-                        <div class="contact-method">
-                            <span class="contact-icon">📱</span>
-                            <span>+55 (27) 99518-7615</span>
-                        </div>
-                        <div class="contact-method">
-                            <span class="contact-icon">📍</span>
-                            <span>Espírito Santo, Brasil</span>
-                        </div>
-                    </div>
-                    
-                    <div class="social-contact">
-                        <h4>Redes Sociais</h4>
-                        <div class="social-icons">
-                            <a href="https://wa.me/5527995187615?text=Olá! Vi seu portfólio e gostaria de conversar sobre um projeto." target="_blank" class="social-icon whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                                <span>WhatsApp</span>
-                            </a>
-                            <a href="https://www.instagram.com/joaoeffgen/" target="_blank" class="social-icon instagram">
-                                <i class="fab fa-instagram"></i>
-                                <span>Instagram</span>
-                            </a>
-                            <a href="https://www.linkedin.com/in/joao-victor-effgen-84888b239/" target="_blank" class="social-icon linkedin">
-                                <i class="fab fa-linkedin"></i>
-                                <span>LinkedIn</span>
-                            </a>
-                            <a href="https://github.com/JoaoVictorEffgen" target="_blank" class="social-icon github">
-                                <i class="fab fa-github"></i>
-                                <span>GitHub</span>
-                            </a>
-                        </div>
-                    </div>
+                   
                 </div>
                 <form class="contact-form">
                     <div class="form-group">
@@ -348,7 +301,10 @@
                         <input type="email" placeholder="Seu Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                        <input type="tel" placeholder="Seu Telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Sua Mensagem" rows="6" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
                 </form>
@@ -358,20 +314,29 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
-                <p>&copy; 2025 João Victor Effgen. Todos os direitos reservados.</p>
-                <div class="social-links">
-                    <a href="https://github.com/JoaoVictorEffgen" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/joao-victor-effgen-84888b239/" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://www.instagram.com/joaoeffgen/" target="_blank" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/5527995187615?text=Olá! Vi seu portfólio e gostaria de conversar sobre um projeto." target="_blank" class="social-link">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
+                <div class="footer-info">
+                    <p>&copy; 2025 João Victor Effgen. Todos os direitos reservados.</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-icons">
+                        <a href="https://wa.me/5527995187615?text=Olá! Vi seu portfólio e gostaria de conversar sobre um projeto." target="_blank" class="social-icon whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                        <a href="https://www.instagram.com/joaoeffgen/" target="_blank" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/joao-victor-effgen-84888b239/" target="_blank" class="social-icon linkedin">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/JoaoVictorEffgen" target="_blank" class="social-icon github">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </footer>

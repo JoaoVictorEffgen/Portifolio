@@ -213,13 +213,13 @@ body {
 
 /* Hero Section */
 .hero {
-    padding: 120px 0 80px;
+    padding: 60px 0 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 100vh;
+    min-height: 60vh;
 }
 
 .hero-content h1 {
@@ -227,6 +227,104 @@ body {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1rem;
+}
+
+/* Typing Animation */
+.typing-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid transparent;
+    /* Removida a animação CSS para ser controlada pelo JavaScript */
+}
+
+.cursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Wave Text Effect */
+.wave-text {
+    display: inline-block;
+    position: relative;
+}
+
+.wave-text span {
+    display: inline-block;
+    font-size: 3.5rem;
+    font-weight: 700;
+    animation: wave 2s ease-in-out infinite;
+    color: var(--primary-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0 1px;
+    line-height: 1;
+    transform-origin: center bottom;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Aplicação específica dos delays para cada letra */
+.wave-text span:nth-child(1) { animation-delay: 0s !important; }
+.wave-text span:nth-child(2) { animation-delay: 0.1s !important; }
+.wave-text span:nth-child(3) { animation-delay: 0.2s !important; }
+.wave-text span:nth-child(4) { animation-delay: 0.3s !important; }
+.wave-text span:nth-child(5) { animation-delay: 0.4s !important; }
+.wave-text span:nth-child(6) { animation-delay: 0.5s !important; }
+.wave-text span:nth-child(7) { animation-delay: 0.6s !important; }
+.wave-text span:nth-child(8) { animation-delay: 0.7s !important; }
+.wave-text span:nth-child(9) { animation-delay: 0.8s !important; }
+.wave-text span:nth-child(10) { animation-delay: 0.9s !important; }
+.wave-text span:nth-child(11) { animation-delay: 1.0s !important; }
+
+/* Garantir que a animação seja aplicada */
+.wave-text span.wave-animated {
+    animation-play-state: running !important;
+}
+
+/* Debug: mostrar que os spans estão sendo animados */
+.wave-text span {
+    position: relative;
+}
+
+.wave-text span::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    opacity: 0.7;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        transform: translateY(-15px) scale(1.05);
+    }
+    50% {
+        transform: translateY(-30px) scale(1.1);
+    }
+    75% {
+        transform: translateY(-15px) scale(1.05);
+    }
+}
+
+/* Removida a keyframe typing pois agora é controlada pelo JavaScript */
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
 }
 
 .highlight {
@@ -311,127 +409,9 @@ body {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Hero Visual */
-.hero-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3rem;
-    width: 100%;
-}
+/* Hero Visual - Cards flutuantes removidos */
 
-.floating-cards {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 900px;
-    flex-wrap: wrap;
-}
-
-.floating-card {
-    background: rgba(30, 41, 59, 0.3);
-    border: 1px solid var(--border-color);
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 20px 40px var(--shadow-color);
-    text-align: center;
-    transition: all 0.5s ease;
-    animation: float 4s ease-in-out infinite, swapPositions 12s ease-in-out infinite;
-    width: 200px;
-    flex: 0 1 200px;
-    backdrop-filter: blur(10px);
-    position: relative;
-}
-
-.floating-card:nth-child(1) {
-    animation: float 4s ease-in-out infinite, swapPositions1 10s ease-in-out infinite;
-    animation-delay: 0s, 0s;
-}
-
-.floating-card:nth-child(2) {
-    animation: float 4s ease-in-out infinite, swapPositions2 10s ease-in-out infinite;
-    animation-delay: -1.3s, 0s;
-}
-
-.floating-card:nth-child(3) {
-    animation: float 4s ease-in-out infinite, swapPositions3 10s ease-in-out infinite;
-    animation-delay: -2.6s, 0s;
-}
-
-.floating-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 30px 60px var(--shadow-color);
-}
-
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.75rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-}
-
-.floating-card h3 {
-    color: var(--text-primary);
-    font-weight: 600;
-    text-align: center;
-    width: 100%;
-    margin: 0;
-    font-size: 1.1rem;
-}
-
-/* Animações dos Cards */
-.particle {
-    animation: particleFloat 6s ease-in-out infinite;
-}
-
-.floating-code {
-    animation: codeFloat 8s ease-in-out infinite;
-    opacity: 0.7;
-}
-
-/* Keyframes das Animações */
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-@keyframes swapPositions1 {
-    0%, 100% { transform: translateX(0) translateY(0); }
-    33% { transform: translateX(220px) translateY(-15px); }
-    66% { transform: translateX(110px) translateY(-10px); }
-}
-
-@keyframes swapPositions2 {
-    0%, 100% { transform: translateX(0) translateY(0); }
-    33% { transform: translateX(-110px) translateY(-10px); }
-    66% { transform: translateX(110px) translateY(-15px); }
-}
-
-@keyframes swapPositions3 {
-    0%, 100% { transform: translateX(0) translateY(0); }
-    33% { transform: translateX(-110px) translateY(-15px); }
-    66% { transform: translateX(-220px) translateY(-10px); }
-}
-
-
-
-@keyframes particleFloat {
-    0%, 100% { transform: translateY(0px) translateX(0px); }
-    25% { transform: translateY(-10px) translateX(5px); }
-    50% { transform: translateY(-5px) translateX(-5px); }
-    75% { transform: translateY(-15px) translateX(3px); }
-}
-
-@keyframes codeFloat {
-    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
-    50% { transform: translateY(-15px) rotate(2deg); opacity: 1; }
-}
+/* Animações dos Cards - Removidas */
 
 /* Section Styles */
 .section-title {
@@ -608,6 +588,40 @@ body {
     padding: 80px 0;
 }
 
+/* Estatísticas Compactas dos Projetos */
+.project-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(30, 41, 59, 0.2);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.stat-compact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.stat-number-compact {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label-compact {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -705,9 +719,16 @@ body {
 }
 
 .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    text-align: center;
 }
 
 .contact-info h3 {
@@ -718,33 +739,23 @@ body {
 
 .contact-info p {
     color: var(--text-secondary);
-    margin-bottom: 2rem;
-}
-
-.contact-methods {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .contact-method {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
     color: var(--text-secondary);
+    font-size: 1.1rem;
 }
 
-.contact-link {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 500;
+.contact-icon {
+    font-size: 1.5rem;
 }
 
-.contact-link:hover {
-    color: var(--secondary-color);
-    text-decoration: underline;
-}
+/* Métodos de contato removidos */
 
 /* Social Contact Section */
 .social-contact {
@@ -818,14 +829,14 @@ body {
     background: #000;
 }
 
-.contact-icon {
-    font-size: 1.5rem;
-}
+/* Ícone de contato removido */
 
 .contact-form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    width: 100%;
+    max-width: 500px;
 }
 
 .form-group input,
@@ -847,7 +858,7 @@ body {
 
 .form-group textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 140px;
 }
 
 /* Coffee Elements */
@@ -1068,45 +1079,90 @@ body {
 .footer {
     background: transparent;
     color: var(--text-primary);
-    padding: 2rem 0;
+    padding: 3rem 0;
     text-align: center;
     border-top: 1px solid var(--border-color);
 }
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 2rem;
     align-items: center;
 }
 
-.social-links {
+.footer-info p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.footer-social h4 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+.footer-social .social-icons {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.social-link {
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: all 0.3s ease;
+.footer-social .social-icon {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--background-color);
-    border: 1px solid var(--border-color);
-}
-
-.social-link:hover {
-    background: var(--primary-color);
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px var(--shadow-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    justify-content: center;
 }
 
-.social-link i {
+.footer-social .social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.footer-social .social-icon i {
     font-size: 1.2rem;
+}
+
+.footer-social .social-icon.whatsapp {
+    background: #25D366;
+}
+
+.footer-social .social-icon.whatsapp:hover {
+    background: #128C7E;
+}
+
+.footer-social .social-icon.instagram {
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+}
+
+.footer-social .social-icon.instagram:hover {
+    background: linear-gradient(45deg, #e6683c 0%,#dc2743 25%,#cc2366 50%,#bc1888 75%,#f09433 100%);
+}
+
+.footer-social .social-icon.linkedin {
+    background: #0077B5;
+}
+
+.footer-social .social-icon.linkedin:hover {
+    background: #005885;
+}
+
+.footer-social .social-icon.github {
+    background: #333;
+}
+
+.footer-social .social-icon.github:hover {
+    background: #000;
 }
 
 /* Flip Card Styles */
@@ -1286,30 +1342,52 @@ body {
     .hero {
         grid-template-columns: 1fr;
         text-align: center;
-        padding: 100px 0 60px;
+        padding: 40px 0 30px;
+        min-height: 50vh;
     }
     
     .hero-content h1 {
         font-size: 2.5rem;
     }
     
-    .floating-cards {
-        gap: 1.5rem;
-    }
+    /* Cards flutuantes removidos */
     
-    .floating-card {
-        min-width: 180px;
-        padding: 1.5rem;
-    }
-    
-    .about-content,
-    .contact-content {
+    .about-content {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
     
+    .contact-content {
+        gap: 2rem;
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+    
+    .contact-form {
+        max-width: 100%;
+    }
+    
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .project-stats {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .stat-compact {
+        gap: 0.3rem;
+    }
+    
+    .stat-number-compact {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label-compact {
+        font-size: 0.8rem;
     }
     
     .nav {
@@ -1323,7 +1401,17 @@ body {
     
     .footer-content {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
+    }
+    
+    .footer-social .social-icons {
+        gap: 0.8rem;
+    }
+    
+    .footer-social .social-icon {
+        min-width: 100px;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
     }
 }
 

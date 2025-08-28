@@ -1,16 +1,16 @@
-# 🎨 Portfólio Interativo
+# ✨ Portfólio Interativo
 
 Um portfólio pessoal moderno e interativo com sistema de cores dinâmicas que mudam automaticamente! Inclui projetos reais como Jogo do Saber, Sistema de Padaria integrado, App Mobile e Site Empresarial.
 
 ## ✨ Características
 
-- **🎨 Cores Dinâmicas**: 6 esquemas de cores diferentes que mudam automaticamente
+- **✨ Cores Dinâmicas**: 6 esquemas de cores diferentes que mudam automaticamente
 - **📱 Design Responsivo**: Funciona perfeitamente em todos os dispositivos
 - **🚀 Animações Suaves**: Transições e efeitos visuais elegantes
 - **🎯 Navegação Intuitiva**: Menu fixo com rolagem suave
 - **💫 Efeitos Interativos**: Cards flutuantes, confetti e muito mais
 
-## 🎨 Esquemas de Cores
+## ✨ Esquemas de Cores
 
 1. **Azul** (padrão) - #2563eb
 2. **Roxo** - #7c3aed
@@ -25,7 +25,7 @@ Um portfólio pessoal moderno e interativo com sistema de cores dinâmicas que m
 - **Clique no logo** "Portfolio" no cabeçalho
 - **Pressione a barra de espaço**
 - **Use as setas do teclado** (← →)
-- **Clique no botão flutuante** 🎨 (canto inferior direito)
+- **Clique no logo** "Portfolio" no cabeçalho
 
 ### Navegação
 - **Menu fixo** no topo para navegação rápida
@@ -185,7 +185,7 @@ Para publicar online, você pode usar:
 - **LinkedIn:** Perfil profissional
 - **Email:** Contato direto por email
 
-### 🎨 **Ícones das Redes Sociais**
+### ✨ **Ícones das Redes Sociais**
 - **Ícones oficiais** do Font Awesome
 - **Cores autênticas** de cada plataforma
 - **Efeitos hover** com animações suaves
@@ -203,7 +203,6 @@ Para publicar online, você pode usar:
 - **Formulário de contato** funcional
 - **Atalhos de teclado** para navegação
 - **Barra de progresso** de scroll
-- **Botão flutuante** para mudança de cores
 
 ## 🔧 Tecnologias Utilizadas
 
@@ -221,7 +220,7 @@ O portfólio é totalmente responsivo e funciona em:
 - 💻 Desktops
 - 🖥️ Monitores grandes
 
-## 🎨 Personalização Avançada
+## ✨ Personalização Avançada
 
 ### Adicionar Novas Seções
 ```html

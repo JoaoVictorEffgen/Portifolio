@@ -96,7 +96,7 @@ const body = document.body;
 const logo = document.querySelector('.logo');
 const navLinks = document.querySelectorAll('.nav-links a');
 const heroTitle = document.querySelector('.hero-title .highlight');
-const floatingCards = document.querySelectorAll('.floating-card');
+// const floatingCards = document.querySelectorAll('.floating-card'); // Removido
 const projectCards = document.querySelectorAll('.project-card');
 const skillTags = document.querySelectorAll('.skill-tag');
 const statItems = document.querySelectorAll('.stat-item');
@@ -109,6 +109,11 @@ document.addEventListener('DOMContentLoaded', function() {
     setupScrollAnimations();
     setupFormHandling();
     initFlipCard(); // Initialize flip card
+    
+    // Delay para garantir que o DOM esteja pronto
+    setTimeout(() => {
+        startWaveAnimation(); // Start wave animation
+    }, 100);
 });
 
 // Initialize portfolio with first color scheme
@@ -248,13 +253,11 @@ function createConfetti() {
     };
 }
 
-// Start automatic color animation
+// Start automatic color animation - DESABILITADO
 function startColorAnimation() {
-    setInterval(() => {
-        if (!isAnimating) {
-            changeColorScheme();
-        }
-    }, 15000); // Change every 15 seconds
+    // Mudança automática de cores desabilitada
+    // As cores só mudam quando o usuário clica manualmente
+    console.log('🎨 Mudança automática de cores desabilitada. Use o logo ou barra de espaço para mudar as cores.');
 }
 
 // Setup scroll animations
@@ -274,7 +277,7 @@ function setupScrollAnimations() {
     }, observerOptions);
     
     // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.project-card, .stat-item, .floating-card');
+    const animatedElements = document.querySelectorAll('.project-card, .stat-item');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -381,18 +384,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Add mouse movement effect to floating cards
-document.addEventListener('mousemove', function(e) {
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-    
-    floatingCards.forEach((card, index) => {
-        const offsetX = (mouseX - 0.5) * 20 * (index + 1);
-        const offsetY = (mouseY - 0.5) * 20 * (index + 1);
-        
-        card.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    });
-});
+// Mouse movement effect para cards flutuantes - Removido
 
 // Add CSS animations
 const style = document.createElement('style');
@@ -464,41 +456,7 @@ function createScrollProgress() {
 // Initialize scroll progress
 createScrollProgress();
 
-// Add floating action button for color change
-function createFloatingActionButton() {
-    const fab = document.createElement('button');
-    fab.className = 'floating-action-button';
-    fab.innerHTML = '🎨';
-    fab.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        box-shadow: 0 10px 30px var(--shadow-color);
-        transition: all 0.3s ease;
-        z-index: 1000;
-    `;
-    
-    fab.addEventListener('click', changeColorScheme);
-    fab.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.1) rotate(180deg)';
-    });
-    fab.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1) rotate(0deg)';
-    });
-    
-    document.body.appendChild(fab);
-}
-
-// Initialize floating action button
-createFloatingActionButton();
+// Botão flutuante removido - Simplificação do projeto
 
 // Coffee Modal Functions
 function showCoffeeModal() {
@@ -687,4 +645,56 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cards flip automatically on hover
 });
 
-console.log('🎨 Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! ☕ Café flutuante ativo! 🎴 Flip Cards com hover (desktop) e toque (mobile) ativos!'); 
+// Wave Text Animation Function
+function startWaveAnimation() {
+    const waveText = document.getElementById('wave-text');
+    if (!waveText) {
+        console.log('❌ Elemento wave-text não encontrado');
+        return;
+    }
+    
+    // Verifica se já existem spans (HTML já foi aplicado)
+    const existingSpans = waveText.querySelectorAll('span');
+    if (existingSpans.length > 0) {
+        console.log('🌊 Efeito ondulado já aplicado via HTML:', existingSpans.length, 'spans encontrados');
+        
+        // Força a aplicação da animação aos spans existentes
+        existingSpans.forEach((span, index) => {
+            // Remove qualquer animação existente
+            span.style.animation = 'none';
+            
+            // Força um reflow
+            span.offsetHeight;
+            
+            // Aplica a nova animação
+            span.style.animation = `wave 2s ease-in-out infinite ${index * 0.1}s`;
+            
+            // Adiciona classe para debug
+            span.classList.add('wave-animated');
+        });
+        
+        console.log('✅ Animação ondulada aplicada com sucesso!');
+        return;
+    }
+    
+    // Fallback: se não houver spans, cria dinamicamente
+    const text = 'João Victor';
+    waveText.innerHTML = '';
+    for (let i = 0; i < text.length; i++) {
+        const span = document.createElement('span');
+        span.textContent = text.charAt(i);
+        span.style.animationDelay = `${i * 0.1}s`;
+        span.style.animation = `wave 2s ease-in-out infinite ${i * 0.1}s`;
+        waveText.appendChild(span);
+    }
+    
+    console.log('🌊 Efeito ondulado aplicado dinamicamente:', text);
+    console.log('📝 Número de spans criados:', waveText.children.length);
+}
+
+// Typing Animation Function (mantida para compatibilidade)
+function startTypingAnimation() {
+    startWaveAnimation(); // Usa o efeito ondulado em vez da digitação
+}
+
+    console.log('✨ Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! 🎴 Flip Cards com hover (desktop) e toque (mobile) ativos!'); 
