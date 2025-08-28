@@ -1,5 +1,23 @@
 // Portfolio Interactive Script
 
+// Typewriter Effect
+function startTypewriter() {
+    const typewriterText = document.getElementById('typewriter-text');
+    const text = "Olá, eu sou João Victor Effgen";
+    let index = 0;
+    
+    function type() {
+        if (index < text.length) {
+            typewriterText.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        }
+    }
+    
+    // Start typing after a short delay
+    setTimeout(type, 500);
+}
+
 // Color schemes for dynamic color changing - Only Blues
 const colorSchemes = [
     {
@@ -109,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupScrollAnimations();
     setupFormHandling();
     initFlipCard(); // Initialize flip card
+    startTypewriter(); // Start typewriter effect
     
     // Delay para garantir que o DOM esteja pronto
     // setTimeout(() => {
@@ -595,40 +614,63 @@ function initFlipCard() {
     
     flipCards.forEach(card => {
         if (isMobile) {
-            // Mobile: Use touch/click events
+            // Mobile: Use touch/click events with better handling
+            let touchStartTime = 0;
+            let touchEndTime = 0;
+            
             card.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                this.classList.toggle('flipped');
+                touchStartTime = new Date().getTime();
             });
             
-            card.addEventListener('click', function(e) {
-                // Prevent double triggering on mobile
-                if (isMobile) {
+            card.addEventListener('touchend', function(e) {
+                touchEndTime = new Date().getTime();
+                const touchDuration = touchEndTime - touchStartTime;
+                
+                // Only flip if it's a quick tap (less than 300ms)
+                if (touchDuration < 300) {
                     e.preventDefault();
                     this.classList.toggle('flipped');
+                    
+                    // Add visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
                 }
             });
             
-            // Add mobile hint
-            const hint = document.createElement('div');
-            hint.className = 'mobile-hint';
-            hint.innerHTML = '👆 Toque para girar';
-            hint.style.cssText = `
-                position: absolute;
-                bottom: 10px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: rgba(255, 255, 255, 0.2);
-                color: var(--primary-color);
-                padding: 5px 10px;
-                border-radius: 15px;
-                font-size: 0.8rem;
-                z-index: 10;
-            `;
+            // Remove click event to prevent double triggering
+            card.addEventListener('click', function(e) {
+                if (isMobile) {
+                    e.preventDefault();
+                }
+            });
             
+            // Add mobile hint only for main flip card
             if (card.classList.contains('flip-card')) {
-                card.style.position = 'relative';
-                card.appendChild(hint);
+                const existingHint = card.querySelector('.mobile-hint');
+                if (!existingHint) {
+                    const hint = document.createElement('div');
+                    hint.className = 'mobile-hint';
+                    hint.innerHTML = '👆 Toque para girar';
+                    hint.style.cssText = `
+                        position: absolute;
+                        bottom: 10px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: rgba(37, 99, 235, 0.8);
+                        color: white;
+                        padding: 8px 12px;
+                        border-radius: 20px;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        z-index: 10;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+                    `;
+                    
+                    card.style.position = 'relative';
+                    card.appendChild(hint);
+                }
             }
         }
         // Desktop: CSS hover handles the flip automatically
@@ -676,4 +718,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Função de compatibilidade removida - agora temos o efeito real de máquina de escrever
 
-    console.log('✨ Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! ⌨️ Efeito de máquina de escrever CSS ativo! 🎴 Flip Cards com hover (desktop) e toque (mobile) ativos!'); 
+console.log('✨ Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! 🎴 Flip Cards com hover (desktop) e toque (mobile) ativos!'); 
