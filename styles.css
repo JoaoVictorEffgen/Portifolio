@@ -271,11 +271,10 @@ body {
 /* Typewriter Effect */
 .typewriter-text {
     display: inline-block;
-    overflow: hidden;
+    overflow: visible;
     white-space: nowrap;
-    border-right: 3px solid var(--primary-color);
-    max-width: 0;
-    animation: typing 3s steps(30, end) forwards;
+    width: auto;
+    min-width: 0;
 }
 
 .cursor {
@@ -285,20 +284,22 @@ body {
     margin-left: 2px;
 }
 
-@keyframes typing {
-    from { 
-        max-width: 0; 
-        border-right-color: var(--primary-color);
-    }
-    to { 
-        max-width: 100%; 
-        border-right-color: transparent;
-    }
-}
-
 @keyframes blink {
     0%, 50% { opacity: 1; }
     51%, 100% { opacity: 0; }
+}
+
+@keyframes cursor-blink {
+    0%, 50% { border-right-color: var(--primary-color); }
+    51%, 100% { border-right-color: transparent; }
+}
+
+/* Typing cursor that appears after text */
+.typing-cursor {
+    color: var(--primary-color);
+    font-weight: 800;
+    animation: blink 1s infinite;
+    margin-left: 2px;
 }
 
 .hero-subtitle {
@@ -1253,17 +1254,119 @@ body {
     font-weight: 500;
 }
 
-/* Hover effect for better UX */
-.flip-card:hover .flip-card-inner {
-    transform: scale(1.02);
+/* Hover effects - Only for desktop (non-touch devices) */
+@media (hover: hover) and (pointer: fine) {
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg) scale(1.02);
+    }
+    
+    .skill-flip-card:hover .skill-flip-inner {
+        transform: rotateY(180deg) scale(1.05);
+    }
+    
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px var(--shadow-color);
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+    
+    .social-icon:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
 }
 
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg) scale(1.02);
+/* Responsive Design - Mobile First Approach */
+
+/* Tablet Breakpoint */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .skill-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
 }
 
-/* Mobile flip card styles */
+/* Mobile Breakpoint */
 @media (max-width: 768px) {
+    /* Hero Section Mobile */
+    .hero {
+        padding: 60px 1rem 40px;
+        min-height: 60vh;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+        line-height: 1.3;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 300px;
+    }
+    
+    .btn {
+        min-width: 200px;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    /* Navigation Mobile */
+    .nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    /* Section Titles Mobile */
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* About Section Mobile */
+    .about {
+        padding: 60px 1rem;
+    }
+    
+    .about-content {
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    /* Flip Cards Mobile */
     .flip-card {
         height: auto;
         min-height: 300px;
@@ -1301,109 +1404,8 @@ body {
         padding: 0.5rem;
         font-size: 0.9rem;
     }
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-    .flip-card {
-        height: auto;
-        min-height: 300px;
-        margin-bottom: 2rem;
-    }
     
-    .flip-card-front, .flip-card-back {
-        padding: 1.5rem;
-        position: relative;
-    }
-    
-    .flip-card h3 {
-        font-size: 1.4rem;
-        margin-bottom: 1rem;
-    }
-    
-    .flip-card p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-    }
-    
-    /* Responsive Design */
-    .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 40px 0 30px;
-        min-height: 50vh;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-    
-    /* Cards flutuantes removidos */
-    
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .contact-content {
-        gap: 2rem;
-        padding: 0 1rem;
-        max-width: 100%;
-    }
-    
-    .contact-form {
-        max-width: 100%;
-    }
-    
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .project-stats {
-        flex-direction: column;
-        gap: 2rem;
-        padding: 1.5rem;
-        margin-top: 2rem;
-    }
-    
-    .stat-compact {
-        gap: 0.3rem;
-    }
-    
-    .stat-number-compact {
-        font-size: 1.8rem;
-    }
-    
-    .stat-label-compact {
-        font-size: 0.8rem;
-    }
-    
-    .nav {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .nav-links {
-        display: none;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .footer-social .social-icons {
-        gap: 0.8rem;
-    }
-    
-    .footer-social .social-icon {
-        min-width: 100px;
-        padding: 0.6rem 0.8rem;
-        font-size: 0.9rem;
-    }
-    
-    /* Skills mobile adjustments */
+    /* Skills Mobile */
     .skills {
         padding: 0 1rem;
         margin: 0 auto;
@@ -1445,31 +1447,195 @@ body {
         font-weight: 600;
     }
     
-    /* Section titles mobile */
-    .section-title {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-    }
-    
-    /* About section mobile */
-    .about {
-        padding: 60px 0;
-    }
-    
-    /* Projects mobile */
+    /* Projects Mobile */
     .projects {
-        padding: 60px 0;
+        padding: 60px 1rem;
     }
     
-    /* Contact mobile */
-    .contact {
-        padding: 60px 0;
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
+    
+    .project-stats {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .stat-compact {
+        gap: 0.3rem;
+    }
+    
+    .stat-number-compact {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label-compact {
+        font-size: 0.8rem;
+    }
+    
+    /* Contact Mobile */
+    .contact {
+        padding: 60px 1rem;
+    }
+    
+    .contact-content {
+        gap: 2rem;
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+    
+    .contact-form {
+        max-width: 100%;
+    }
+    
+    /* Footer Mobile */
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .footer-social .social-icons {
+        gap: 0.8rem;
+        justify-content: center;
+    }
+    
+    .footer-social .social-icon {
+        min-width: 100px;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Coffee Modal Mobile */
+    .coffee-card {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .coffee-icon {
+        font-size: 3rem;
+    }
+    
+    .coffee-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .coffee-card p {
+        font-size: 1rem;
+    }
+    
+    /* Donation Section Mobile */
+    .donation-section {
+        gap: 15px;
+    }
+    
+    .qr-code {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .donation-link {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    
+    .copy-link-btn {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+}
+
+/* Touch Device Specific Styles */
+@media (hover: none) and (pointer: coarse) {
+    .flip-card, .skill-flip-card {
+        cursor: pointer;
+    }
+    
+    .flip-card:active .flip-card-inner,
+    .skill-flip-card:active .skill-flip-inner {
+        transform: scale(0.98);
+    }
+    
+    .btn:active {
+        transform: scale(0.95);
+    }
+    
+    .project-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Small Mobile Breakpoint */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .skill-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .skill-flip-card {
+        height: 80px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .btn {
+        min-width: 180px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .project-card {
+        margin: 0 0.5rem;
+    }
+    
+    .project-content {
+        padding: 1.5rem;
+    }
+    
+    .project-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .project-content p {
+        font-size: 0.9rem;
+    }
+
 }
 
 /* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
+}
+
+/* Screen Reader Only Labels */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* Color Transition Animation - Removida para evitar conflitos */ 

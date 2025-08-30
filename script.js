@@ -3,19 +3,38 @@
 // Typewriter Effect
 function startTypewriter() {
     const typewriterText = document.getElementById('typewriter-text');
-    const text = "Olá, eu sou João Victor Effgen";
+    if (!typewriterText) {
+        console.error('❌ Elemento typewriter-text não encontrado!');
+        return;
+    }
+    
+    // Use config if available, fallback to default
+    const text = window.PORTFOLIO_CONFIG ? 
+        `Olá, eu sou ${window.PORTFOLIO_CONFIG.personal.name}` : 
+        "Olá, eu sou João Victor Effgen";
+    
+    console.log('⌨️ Iniciando Typewriter com texto:', text);
+    
     let index = 0;
+    
+    // Clear any existing text and reset styles
+    typewriterText.textContent = '';
+    typewriterText.style.borderRight = 'none'; // Remove border initially
     
     function type() {
         if (index < text.length) {
             typewriterText.textContent += text.charAt(index);
             index++;
-            setTimeout(type, 100);
+            setTimeout(type, 100); // Slightly slower for better readability
+        } else {
+            // Add cursor after the last character
+            typewriterText.innerHTML += '<span class="typing-cursor">|</span>';
+            console.log('✅ Typewriter concluído!');
         }
     }
     
     // Start typing after a short delay
-    setTimeout(type, 500);
+    setTimeout(type, 1000);
 }
 
 // Color schemes for dynamic color changing - Only Blues

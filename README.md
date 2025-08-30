@@ -4,11 +4,12 @@ Um portfólio pessoal moderno e interativo com sistema de cores dinâmicas que m
 
 ## ✨ Características
 
-- **✨ Cores Dinâmicas**: 6 esquemas de cores diferentes que mudam automaticamente
+- **✨ Cores Dinâmicas**: 6 esquemas de cores diferentes que mudam manualmente
 - **📱 Design Responsivo**: Funciona perfeitamente em todos os dispositivos
 - **🚀 Animações Suaves**: Transições e efeitos visuais elegantes
 - **🎯 Navegação Intuitiva**: Menu fixo com rolagem suave
-- **💫 Efeitos Interativos**: Cards flutuantes, confetti e muito mais
+- **💫 Efeitos Interativos**: Efeito Typewriter, confetti e muito mais
+- **🎴 Flip Cards**: Cards interativos com hover (desktop) e toque (mobile)
 
 ## ✨ Esquemas de Cores
 
@@ -25,7 +26,6 @@ Um portfólio pessoal moderno e interativo com sistema de cores dinâmicas que m
 - **Clique no logo** "Portfolio" no cabeçalho
 - **Pressione a barra de espaço**
 - **Use as setas do teclado** (← →)
-- **Clique no logo** "Portfolio" no cabeçalho
 
 ### Navegação
 - **Menu fixo** no topo para navegação rápida
@@ -196,13 +196,14 @@ Para publicar online, você pode usar:
 - **Instagram:** Abre seu perfil no Instagram
 - **Todos os links** abrem em nova aba para não perder o portfólio
 
-- **Mudança automática de cores** a cada 15 segundos
+- **Efeito Typewriter** para o título principal
 - **Efeito confetti** ao mudar cores
 - **Animações de scroll** para elementos
 - **Efeitos de hover** em todos os elementos interativos
-- **Formulário de contato** funcional
+- **Formulário de contato** funcional com validação
 - **Atalhos de teclado** para navegação
 - **Barra de progresso** de scroll
+- **Flip Cards** interativos para habilidades
 
 ## 🔧 Tecnologias Utilizadas
 

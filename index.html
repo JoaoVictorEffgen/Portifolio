@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de João Victor Effgen - Desenvolvedor Full Stack & Mobile especializado em React, React Native, Node.js e desenvolvimento web">
+    <meta name="keywords" content="desenvolvedor, full stack, mobile, React, React Native, Node.js, portfólio, João Victor Effgen">
+    <meta name="author" content="João Victor Effgen">
+    <meta name="robots" content="index, follow">
     <title>João Victor Effgen - Portfólio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -49,7 +53,6 @@
                     <img src="imagem/Meu eu.png" alt="João Victor Effgen" class="profile-image">
                     <h1 class="hero-title">
                         <span class="typewriter-text" id="typewriter-text"></span>
-                        <span class="cursor">|</span>
                     </h1>
                 </div>
                 <p class="hero-subtitle">Desenvolvedor Full Stack & Mobile</p>
@@ -266,26 +269,26 @@
                         <div class="project-links">
                             <a href="https://github.com/JoaoVictorEffgen/VSC" target="_blank" class="project-link">GitHub</a>
                         </div>
-                                         </div>
-                 </div>
-             </div>
-             
-             <!-- Estatísticas Compactas -->
-             <div class="project-stats">
-                 <div class="stat-compact">
-                     <span class="stat-number-compact">4+</span>
-                     <span class="stat-label-compact">Projetos Concluídos</span>
-                 </div>
-                 <div class="stat-compact">
-                     <span class="stat-number-compact">3</span>
-                     <span class="stat-label-compact">Plataformas</span>
-                 </div>
-                 <div class="stat-compact">
-                     <span class="stat-number-compact">100%</span>
-                     <span class="stat-label-compact">Funcionais</span>
-                 </div>
-             </div>
-         </section>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Estatísticas Compactas -->
+            <div class="project-stats">
+                <div class="stat-compact">
+                    <span class="stat-number-compact">4+</span>
+                    <span class="stat-label-compact">Projetos Concluídos</span>
+                </div>
+                <div class="stat-compact">
+                    <span class="stat-number-compact">3</span>
+                    <span class="stat-label-compact">Plataformas</span>
+                </div>
+                <div class="stat-compact">
+                    <span class="stat-number-compact">100%</span>
+                    <span class="stat-label-compact">Funcionais</span>
+                </div>
+            </div>
+        </section>
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
@@ -298,16 +301,20 @@
                 </div>
                 <form class="contact-form">
                     <div class="form-group">
-                        <input type="text" placeholder="Seu Nome" required>
+                        <label for="name" class="sr-only">Nome</label>
+                        <input type="text" id="name" name="name" placeholder="Seu Nome" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Seu Email" required>
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Seu Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" placeholder="Seu Telefone" required>
+                        <label for="phone" class="sr-only">Telefone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Seu Telefone" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Sua Mensagem" rows="6" required></textarea>
+                        <label for="message" class="sr-only">Mensagem</label>
+                        <textarea id="message" name="message" placeholder="Sua Mensagem" rows="6" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
                 </form>

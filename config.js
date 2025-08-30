@@ -123,8 +123,11 @@ document.addEventListener('DOMContentLoaded', function() {
     updateAllLinks();
     console.log('🎯 Links atualizados com sucesso!');
     console.log('📱 WhatsApp:', getWhatsAppLink(PORTFOLIO_CONFIG.contact.whatsapp.number, PORTFOLIO_CONFIG.contact.whatsapp.message));
-    console.log('📸 Instagram:', PORTFOLIO_CONFIG.social.instagram);
+    console.log('📸 Instagram:', `https://instagram.com/${PORTFOLIO_CONFIG.contact.instagram}`);
 });
+
+// Tornar config disponível globalmente
+window.PORTFOLIO_CONFIG = PORTFOLIO_CONFIG;
 
 // Exportar configuração para uso em outros arquivos
 if (typeof module !== 'undefined' && module.exports) {
