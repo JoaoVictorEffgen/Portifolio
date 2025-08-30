@@ -1406,11 +1406,18 @@ body {
     /* About Section Mobile */
     .about {
         padding: 60px 1rem;
+        overflow: hidden; /* Previne overflow horizontal */
     }
     
     .about-content {
         gap: 2rem;
         padding: 0 1rem;
+        max-width: 100%;
+    }
+    
+    .about-text {
+        width: 100%;
+        overflow: hidden; /* Previne overflow */
     }
     
     .hero-content {
@@ -1422,15 +1429,18 @@ body {
     
     /* Flip Cards Mobile */
     .flip-card {
-        height: 400px; /* Altura fixa para evitar movimento */
+        height: auto; /* Altura automática para evitar movimento */
+        min-height: 350px; /* Altura mínima para manter consistência */
         margin-bottom: 2rem;
         overflow: hidden; /* Previne conteúdo extra */
+        position: relative; /* Garante posicionamento correto */
     }
 
     .flip-card-inner {
         width: 100%;
         height: 100%;
         position: relative; /* Garante posicionamento correto */
+        min-height: 350px; /* Altura mínima consistente */
     }
 
     .flip-card-front, .flip-card-back {
@@ -1445,29 +1455,48 @@ body {
         height: 100%;
         top: 0;
         left: 0;
+        min-height: 350px; /* Altura mínima consistente */
     }
     
     .flip-card h3 {
         font-size: 1.4rem;
         margin-bottom: 1rem;
+        line-height: 1.2;
     }
     
     .flip-card p {
         font-size: 0.95rem;
         line-height: 1.5;
         max-width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .formation-content {
+        width: 100%;
+        max-width: 100%;
     }
     
     .formation-content p {
         margin-bottom: 0.8rem;
-        padding: 0.5rem;
+        padding: 0.8rem;
         font-size: 0.9rem;
+        line-height: 1.4;
+        width: 100%;
+        max-width: 100%;
     }
     
     /* Skills Mobile */
     .skills {
         padding: 0 1rem;
         margin: 0 auto;
+        width: 100%;
+        overflow: hidden; /* Previne overflow */
+    }
+    
+    .skills h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
     }
     
     .skill-grid {
@@ -1475,35 +1504,58 @@ body {
         gap: 1rem;
         max-width: 100%;
         margin: 1rem auto;
+        width: 100%;
     }
     
     .skill-flip-card {
-        height: 90px;
+        height: 100px; /* Altura fixa para evitar movimento */
+        width: 100%;
+        position: relative; /* Garante posicionamento correto */
+        overflow: hidden; /* Previne overflow */
+    }
+    
+    .skill-flip-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
     }
     
     .skill-flip-front, .skill-flip-back {
         padding: 0.8rem;
-        border-radius: 8px;
+        border-radius: 12px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
     
     .skill-percentage {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
     }
     
     .skill-usage {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         max-width: 80px;
         line-height: 1.2;
+        word-wrap: break-word;
     }
     
     .skill-icon {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         margin-bottom: 0.3rem;
     }
     
     .skill-name {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         font-weight: 600;
+        line-height: 1.1;
     }
     
     /* Projects Mobile */
@@ -1652,13 +1704,90 @@ body {
         height: 120px;
     }
     
+    /* About Section Small Mobile */
+    .about {
+        padding: 40px 0.8rem;
+    }
+    
+    .about-content {
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .flip-card {
+        min-height: 320px; /* Altura menor para mobile pequeno */
+        margin-bottom: 1.5rem;
+    }
+    
+    .flip-card-inner {
+        min-height: 320px;
+    }
+    
+    .flip-card-front, .flip-card-back {
+        min-height: 320px;
+        padding: 1.2rem;
+    }
+    
+    .flip-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .flip-card p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+    }
+    
+    .formation-content p {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    /* Skills Small Mobile */
+    .skills {
+        padding: 0 0.5rem;
+    }
+    
+    .skills h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+    
     .skill-grid {
         grid-template-columns: 1fr;
         gap: 0.8rem;
     }
     
     .skill-flip-card {
-        height: 80px;
+        height: 90px;
+    }
+    
+    .skill-flip-front, .skill-flip-back {
+        padding: 0.6rem;
+        border-radius: 10px;
+    }
+    
+    .skill-percentage {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .skill-usage {
+        font-size: 0.55rem;
+        max-width: 70px;
+        line-height: 1.1;
+    }
+    
+    .skill-icon {
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .skill-name {
+        font-size: 0.65rem;
+        line-height: 1.1;
     }
     
     .section-title {
@@ -1708,3 +1837,47 @@ html {
 }
 
 /* Color Transition Animation - Removida para evitar conflitos */ 
+
+/* Mobile Hint Styles */
+.mobile-hint {
+    position: absolute !important;
+    bottom: 15px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: rgba(37, 99, 235, 0.9) !important;
+    color: white !important;
+    padding: 6px 10px !important;
+    border-radius: 15px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    z-index: 5 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+    white-space: nowrap !important;
+    pointer-events: none !important;
+    max-width: 90% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Ensure flip cards have proper positioning for hints */
+.flip-card {
+    position: relative !important;
+}
+
+/* Responsive adjustments for mobile hints */
+@media (max-width: 768px) {
+    .mobile-hint {
+        font-size: 0.7rem !important;
+        padding: 5px 8px !important;
+        bottom: 12px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-hint {
+        font-size: 0.65rem !important;
+        padding: 4px 6px !important;
+        bottom: 10px !important;
+        max-width: 85% !important;
+    }
+} 

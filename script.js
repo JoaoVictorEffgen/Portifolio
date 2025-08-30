@@ -680,7 +680,7 @@ function initFlipCard() {
                 }
             });
             
-            // Add mobile hint only for main flip card
+            // Add mobile hint only for main flip card with better positioning
             if (card.classList.contains('flip-card')) {
                 const existingHint = card.querySelector('.mobile-hint');
                 if (!existingHint) {
@@ -689,17 +689,19 @@ function initFlipCard() {
                     hint.innerHTML = '👆 Toque para girar';
                     hint.style.cssText = `
                         position: absolute;
-                        bottom: 10px;
+                        bottom: 15px;
                         left: 50%;
                         transform: translateX(-50%);
-                        background: rgba(37, 99, 235, 0.8);
+                        background: rgba(37, 99, 235, 0.9);
                         color: white;
-                        padding: 8px 12px;
-                        border-radius: 20px;
-                        font-size: 0.8rem;
+                        padding: 6px 10px;
+                        border-radius: 15px;
+                        font-size: 0.75rem;
                         font-weight: 600;
-                        z-index: 10;
-                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+                        z-index: 5;
+                        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+                        white-space: nowrap;
+                        pointer-events: none;
                     `;
                     
                     card.style.position = 'relative';
