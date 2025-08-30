@@ -4,37 +4,44 @@
 function startTypewriter() {
     const typewriterText = document.getElementById('typewriter-text');
     if (!typewriterText) {
-        console.error('❌ Elemento typewriter-text não encontrado!');
         return;
     }
     
     // Use config if available, fallback to default
     const text = window.PORTFOLIO_CONFIG ? 
-        `Olá, eu sou ${window.PORTFOLIO_CONFIG.personal.name}` : 
-        "Olá, eu sou João Victor Effgen";
-    
-    console.log('⌨️ Iniciando Typewriter com texto:', text);
+        `Olá, eu sou \n${window.PORTFOLIO_CONFIG.personal.name}` : 
+        "Olá, eu sou \nJoão Victor Effgen";
     
     let index = 0;
+    let typeTimeout;
     
     // Clear any existing text and reset styles
     typewriterText.textContent = '';
-    typewriterText.style.borderRight = 'none'; // Remove border initially
     
     function type() {
         if (index < text.length) {
-            typewriterText.textContent += text.charAt(index);
+            const char = text.charAt(index);
+            if (char === '\n') {
+                typewriterText.innerHTML += '<br>';
+            } else {
+                typewriterText.innerHTML += char;
+            }
             index++;
-            setTimeout(type, 100); // Slightly slower for better readability
+            typeTimeout = setTimeout(type, 100);
         } else {
             // Add cursor after the last character
-            typewriterText.innerHTML += '<span class="typing-cursor">|</span>';
-            console.log('✅ Typewriter concluído!');
+            typewriterText.innerHTML += '<span class="typing-cursor" aria-hidden="true">|</span>';
         }
     }
     
     // Start typing after a short delay
-    setTimeout(type, 1000);
+    const startTimeout = setTimeout(type, 1000);
+    
+    // Cleanup function
+    return () => {
+        clearTimeout(typeTimeout);
+        clearTimeout(startTimeout);
+    };
 }
 
 // Color schemes for dynamic color changing - Only Blues
@@ -146,12 +153,13 @@ document.addEventListener('DOMContentLoaded', function() {
     setupScrollAnimations();
     setupFormHandling();
     initFlipCard(); // Initialize flip card
-    startTypewriter(); // Start typewriter effect
+    const typewriterCleanup = startTypewriter(); // Start typewriter effect
     
-    // Delay para garantir que o DOM esteja pronto
-    // setTimeout(() => {
-    //     startTypingAnimation(); // Start typing animation
-    // }, 100);
+    // Cleanup function for page unload
+    window.addEventListener('beforeunload', function() {
+        if (typewriterCleanup) typewriterCleanup();
+        cleanupCoffeeMovement();
+    });
 });
 
 // Initialize portfolio with first color scheme
@@ -295,7 +303,6 @@ function createConfetti() {
 function startColorAnimation() {
     // Mudança automática de cores desabilitada
     // As cores só mudam quando o usuário clica manualmente
-    console.log('🎨 Mudança automática de cores desabilitada. Use o logo ou barra de espaço para mudar as cores.');
 }
 
 // Setup scroll animations
@@ -571,7 +578,15 @@ function moveCoffeeRandomly() {
 }
 
 // Move coffee every 10 seconds
-setInterval(moveCoffeeRandomly, 10000);
+let coffeeInterval = setInterval(moveCoffeeRandomly, 10000);
+
+// Cleanup function for coffee movement
+function cleanupCoffeeMovement() {
+    if (coffeeInterval) {
+        clearInterval(coffeeInterval);
+        coffeeInterval = null;
+    }
+}
 
 // Close modal when clicking outside
 document.addEventListener('click', function(e) {
@@ -695,7 +710,7 @@ function initFlipCard() {
         // Desktop: CSS hover handles the flip automatically
     });
     
-    console.log(`🎴 Flip Cards ativos! ${isMobile ? 'Modo Mobile (toque)' : 'Modo Desktop (hover)'}`);
+    // Flip Cards ativos - Modo Mobile (toque) ou Desktop (hover)
 }
 
 // Initialize flip card when DOM is loaded
@@ -737,4 +752,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Função de compatibilidade removida - agora temos o efeito real de máquina de escrever
 
-console.log('✨ Portfolio interativo carregado! Clique no logo ou use a barra de espaço para mudar as cores! 🎴 Flip Cards com hover (desktop) e toque (mobile) ativos!'); 
+// Portfolio interativo carregado com sucesso 

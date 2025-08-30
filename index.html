@@ -36,7 +36,7 @@
         <!-- Header -->
         <header class="header">
             <nav class="nav">
-                <div class="logo">Portfolio</div>
+                <div class="logo" role="button" tabindex="0" aria-label="Clique para mudar as cores do portfólio">Portfolio</div>
                 <ul class="nav-links">
                     <li><a href="#home">Início</a></li>
                     <li><a href="#about">Sobre</a></li>
@@ -57,8 +57,8 @@
                 </div>
                 <p class="hero-subtitle">Desenvolvedor Full Stack & Mobile</p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary">Ver Projetos</button>
-                    <button class="btn btn-secondary">Download CV</button>
+                                    <button class="btn btn-primary" aria-label="Ver todos os projetos">Ver Projetos</button>
+                <button class="btn btn-secondary" aria-label="Baixar currículo em PDF">Download CV</button>
                 </div>
             </div>
             <!-- Cards flutuantes removidos -->
@@ -69,7 +69,7 @@
             <h2 class="section-title">Sobre Mim</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <div class="flip-card">
+                    <div class="flip-card" role="button" tabindex="0" aria-label="Card interativo - Toque ou passe o mouse para ver informações sobre formação">
                         <div class="flip-card-inner">
                             <!-- Front Side - Sobre Mim -->
                             <div class="flip-card-front">
@@ -105,10 +105,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="skill-flip-card">
+                            <div class="skill-flip-card" role="button" tabindex="0" aria-label="React - 80% de proficiência, desenvolvimento de interfaces modernas">
                                 <div class="skill-flip-inner">
                                     <div class="skill-flip-front">
-                                        <div class="skill-icon">⚛️</div>
+                                        <div class="skill-icon" aria-hidden="true">⚛️</div>
                                         <div class="skill-name">React</div>
                                     </div>
                                     <div class="skill-flip-back">
@@ -316,7 +316,7 @@
                         <label for="message" class="sr-only">Mensagem</label>
                         <textarea id="message" name="message" placeholder="Sua Mensagem" rows="6" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    <button type="submit" class="btn btn-primary" aria-label="Enviar mensagem de contato">Enviar Mensagem</button>
                 </form>
             </div>
         </section>
@@ -330,20 +330,20 @@
                 <div class="footer-social">
                     <h4>Redes Sociais</h4>
                     <div class="social-icons">
-                        <a href="https://wa.me/5527995187615?text=Olá! Vi seu portfólio e gostaria de conversar sobre um projeto." target="_blank" class="social-icon whatsapp">
-                            <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/5527995187615?text=Olá! Vi seu portfólio e gostaria de conversar sobre um projeto." target="_blank" class="social-icon whatsapp" aria-label="Conversar via WhatsApp">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
                             <span>WhatsApp</span>
                         </a>
-                        <a href="https://www.instagram.com/joaoeffgen/" target="_blank" class="social-icon instagram">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/joaoeffgen/" target="_blank" class="social-icon instagram" aria-label="Seguir no Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
                             <span>Instagram</span>
                         </a>
-                        <a href="https://www.linkedin.com/in/joao-victor-effgen-84888b239/" target="_blank" class="social-icon linkedin">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/joao-victor-effgen-84888b239/" target="_blank" class="social-icon linkedin" aria-label="Conectar no LinkedIn">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
                             <span>LinkedIn</span>
                         </a>
-                        <a href="https://github.com/JoaoVictorEffgen" target="_blank" class="social-icon github">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/JoaoVictorEffgen" target="_blank" class="social-icon github" aria-label="Ver projetos no GitHub">
+                            <i class="fab fa-github" aria-hidden="true"></i>
                             <span>GitHub</span>
                         </a>
                     </div>
@@ -373,16 +373,16 @@
                         <span class="link-text">Link para doação</span>
                         <span class="copy-icon">📋</span>
                     </a>
-                    <button class="copy-link-btn" onclick="copyDonationLink()">Copiar Link</button>
+                    <button class="copy-link-btn" onclick="copyDonationLink()" aria-label="Copiar link de doação para área de transferência">Copiar Link</button>
                 </div>
             </div>
             
-            <button class="close-coffee" onclick="closeCoffeeModal()">Fechar</button>
+            <button class="close-coffee" onclick="closeCoffeeModal()" aria-label="Fechar modal de doação">Fechar</button>
         </div>
     </div>
 
     <!-- Floating Coffee Element -->
-    <div id="floating-coffee" class="floating-coffee" onclick="showCoffeeModal()">
+    <div id="floating-coffee" class="floating-coffee" onclick="showCoffeeModal()" role="button" tabindex="0" aria-label="Abrir modal de doação de café">
         ☕
     </div>
 

@@ -121,9 +121,7 @@ function updateSocialContactLinks() {
 // Executar quando a página carregar
 document.addEventListener('DOMContentLoaded', function() {
     updateAllLinks();
-    console.log('🎯 Links atualizados com sucesso!');
-    console.log('📱 WhatsApp:', getWhatsAppLink(PORTFOLIO_CONFIG.contact.whatsapp.number, PORTFOLIO_CONFIG.contact.whatsapp.message));
-    console.log('📸 Instagram:', `https://instagram.com/${PORTFOLIO_CONFIG.contact.instagram}`);
+    // Links atualizados com sucesso
 });
 
 // Tornar config disponível globalmente
