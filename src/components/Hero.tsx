@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Github, Linkedin, Mail, Download } from 'lucide-react'
+import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0)

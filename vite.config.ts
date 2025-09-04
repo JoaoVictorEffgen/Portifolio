@@ -6,10 +6,8 @@ export default defineConfig({
   plugins: [react()],
   build: {
     target: 'esnext',
-    esbuild: {
-      define: {
-        global: 'globalThis',
-      },
-    },
+  },
+  define: {
+    global: 'globalThis',
   },
 })
