@@ -644,83 +644,32 @@ function fallbackCopyTextToClipboard(text) {
 // Flip Card functionality with mobile support
 function initFlipCard() {
     const flipCards = document.querySelectorAll('.flip-card, .skill-flip-card');
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     flipCards.forEach(card => {
-        if (isMobile) {
-            // Mobile: Use touch/click events with better handling
-            let touchStartTime = 0;
-            let touchEndTime = 0;
-            
-            card.addEventListener('touchstart', function(e) {
-                touchStartTime = new Date().getTime();
-            });
-            
-            card.addEventListener('touchend', function(e) {
-                touchEndTime = new Date().getTime();
-                const touchDuration = touchEndTime - touchStartTime;
-                
-                // Only flip if it's a quick tap (less than 300ms)
-                if (touchDuration < 300) {
-                    e.preventDefault();
-                    this.classList.toggle('flipped');
-                    
-                    // Add visual feedback
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                }
-            });
-            
-            // Remove click event to prevent double triggering
-            card.addEventListener('click', function(e) {
-                if (isMobile) {
-                    e.preventDefault();
-                }
-            });
-            
-            // Add mobile hint only for main flip card with better positioning
-            if (card.classList.contains('flip-card')) {
-                const existingHint = card.querySelector('.mobile-hint');
-                if (!existingHint) {
-                    const hint = document.createElement('div');
-                    hint.className = 'mobile-hint';
-                    hint.innerHTML = '👆 Toque para girar';
-                    hint.style.cssText = `
-                        position: absolute;
-                        bottom: 15px;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        background: rgba(37, 99, 235, 0.9);
-                        color: white;
-                        padding: 6px 10px;
-                        border-radius: 15px;
-                        font-size: 0.75rem;
-                        font-weight: 600;
-                        z-index: 5;
-                        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-                        white-space: nowrap;
-                        pointer-events: none;
-                    `;
-                    
-                    card.style.position = 'relative';
-                    card.appendChild(hint);
-                }
+        // Add mobile hint only for main flip card
+        if (card.classList.contains('flip-card')) {
+            const existingHint = card.querySelector('.mobile-hint');
+            if (!existingHint) {
+                const hint = document.createElement('div');
+                hint.className = 'mobile-hint';
+                hint.innerHTML = '👆 Toque para girar';
+                card.appendChild(hint);
             }
         }
-        // Desktop: CSS hover handles the flip automatically
     });
-    
-    // Flip Cards ativos - Modo Mobile (toque) ou Desktop (hover)
 }
 
-// Initialize flip card when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initFlipCard();
-    
-    // No more auto-flip or click functionality
-    // Cards flip automatically on hover
+// Mobile flip card functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const flipCards = document.querySelectorAll('.flip-card');
+    flipCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Verifica se é um dispositivo de toque (ou tela pequena)
+            if (window.innerWidth <= 768) {
+                this.classList.toggle('flipped');
+            }
+        });
+    });
 });
 
 // Typing Text Animation Function - Removida, agora usando CSS puro
