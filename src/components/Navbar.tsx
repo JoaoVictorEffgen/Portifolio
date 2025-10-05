@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { useEasterEggs } from '../hooks/useEasterEggs'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { handleTouch, isMobile } = useEasterEggs()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +40,21 @@ const Navbar = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-3"
+            className="flex items-center space-x-3 cursor-pointer"
+            onClick={() => {
+              if (isMobile) {
+                // Simular touch para mobile
+                const mockTouchEvent = {
+                  type: 'touchstart',
+                  touches: [{
+                    clientX: 0,
+                    clientY: 0,
+                    target: document.body
+                  }]
+                } as any;
+                handleTouch(mockTouchEvent, 'logo');
+              }
+            }}
           >
             <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-purple-400">
               <img

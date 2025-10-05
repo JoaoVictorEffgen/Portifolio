@@ -1,8 +1,11 @@
 
 import { motion } from 'framer-motion'
 import {Code, Zap} from 'lucide-react'
+import { useEasterEggs } from '../hooks/useEasterEggs'
 
 const About = () => {
+  const { handleTouch, isMobile } = useEasterEggs()
+  
   const stats = [
     { number: '15+', label: 'Projetos Concluídos', icon: Code },
     { number: '100%', label: 'Dedicação', icon: Zap }
@@ -34,7 +37,23 @@ const About = () => {
             viewport={{ once: true }}
           >
             <div className="relative">
-              <div className="w-80 h-80 mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30">
+              <div 
+                className="w-80 h-80 mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 cursor-pointer"
+                onClick={() => {
+                  if (isMobile) {
+                    // Simular touch para mobile
+                    const mockTouchEvent = {
+                      type: 'touchstart',
+                      touches: [{
+                        clientX: 0,
+                        clientY: 0,
+                        target: document.body
+                      }]
+                    } as any;
+                    handleTouch(mockTouchEvent, 'photo');
+                  }
+                }}
+              >
                 <img
                   src="/imagem/Meu eu.png"
                   alt="João Victor Effgen"

@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
+import { ChevronDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
+import SnakeGame from './SnakeGame'
+import { useEasterEggs } from '../hooks/useEasterEggs'
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0)
+  const [showSnakeGame, setShowSnakeGame] = useState(false)
+  const { activateSnakeMode } = useEasterEggs()
+  
   const roles = [
     'Desenvolvedor Full Stack',
     'Especialista em Frontend',
@@ -101,6 +106,16 @@ const Hero = () => {
             >
               Entre em Contato
             </motion.button>
+            
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowSnakeGame(true)}
+              className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold rounded-full hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 shadow-lg hover:shadow-yellow-500/25 flex items-center gap-2"
+            >
+              <Sparkles className="w-5 h-5" />
+              Projeto Surpresa
+            </motion.button>
           </motion.div>
 
                      {/* Social Links */}
@@ -148,6 +163,13 @@ const Hero = () => {
           </motion.button>
                  </motion.div>
        </div>
+
+       {/* Snake Game Modal */}
+       <SnakeGame 
+         isOpen={showSnakeGame} 
+         onClose={() => setShowSnakeGame(false)}
+         onSnakeMode={activateSnakeMode}
+       />
 
      </section>
    )

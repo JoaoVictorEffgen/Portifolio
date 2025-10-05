@@ -9,8 +9,11 @@ import {
   Heart,
   Coffee
 } from 'lucide-react'
+import { useEasterEggs } from '../hooks/useEasterEggs'
 
 const Footer = () => {
+  const { handleTouch, isMobile } = useEasterEggs()
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -149,6 +152,20 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
           className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center"
+          onClick={() => {
+            if (isMobile) {
+              // Simular touch para mobile
+              const mockTouchEvent = {
+                type: 'touchstart',
+                touches: [{
+                  clientX: 0,
+                  clientY: 0,
+                  target: document.body
+                }]
+              } as any;
+              handleTouch(mockTouchEvent, 'footer');
+            }
+          }}
         >
           <div className="flex items-center text-gray-400 text-sm mb-4 md:mb-0">
             <span>© {currentYear} João Victor Effgen. Feito com</span>

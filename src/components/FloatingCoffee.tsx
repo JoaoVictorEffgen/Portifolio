@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Coffee } from 'lucide-react'
-
 const FloatingCoffee = () => {
   const [showCoffeeModal, setShowCoffeeModal] = useState(false)
   const [hasBeenClicked, setHasBeenClicked] = useState(false)
