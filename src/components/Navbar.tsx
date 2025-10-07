@@ -57,11 +57,20 @@ const Navbar = () => {
             }}
           >
             <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-purple-400">
-              <img
-                src="/imagem/header.gif"
-                alt="João Victor"
+              <video
+                src="/imagem/saudacao.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover"
-              />
+              >
+                <img
+                  src="/imagem/header.gif"
+                  alt="João Victor"
+                  className="w-full h-full object-cover"
+                />
+              </video>
             </div>
             <span className="text-xl font-bold text-white">João Victor</span>
           </motion.div>
