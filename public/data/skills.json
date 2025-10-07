@@ -1,0 +1,58 @@
+[
+  {
+    "name": "HTML5",
+    "level": 95,
+    "category": "frontend",
+    "icon": "🌐",
+    "description": "Estruturação semântica e acessível de páginas web"
+  },
+  {
+    "name": "CSS3",
+    "level": 90,
+    "category": "frontend", 
+    "icon": "🎨",
+    "description": "Estilização moderna com Flexbox, Grid e animações"
+  },
+  {
+    "name": "JavaScript",
+    "level": 85,
+    "category": "frontend",
+    "icon": "⚡",
+    "description": "Programação dinâmica e interativa para web"
+  },
+  {
+    "name": "React",
+    "level": 80,
+    "category": "frontend",
+    "icon": "⚛️",
+    "description": "Desenvolvimento de interfaces modernas e reativas"
+  },
+  {
+    "name": "Node.js",
+    "level": 75,
+    "category": "backend",
+    "icon": "🟢",
+    "description": "Desenvolvimento de APIs e aplicações server-side"
+  },
+  {
+    "name": "Python",
+    "level": 70,
+    "category": "backend",
+    "icon": "🐍",
+    "description": "Automação, análise de dados e desenvolvimento backend"
+  },
+  {
+    "name": "Git",
+    "level": 85,
+    "category": "tools",
+    "icon": "📚",
+    "description": "Controle de versão e colaboração em equipe"
+  },
+  {
+    "name": "Java",
+    "level": 75,
+    "category": "backend",
+    "icon": "☕",
+    "description": "Desenvolvimento orientado a objetos e aplicações robustas"
+  }
+]

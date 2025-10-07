@@ -58,7 +58,7 @@ const Navbar = () => {
           >
             <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-purple-400">
               <img
-                src="/imagem/header.jpeg"
+                src="/imagem/header.gif"
                 alt="João Victor"
                 className="w-full h-full object-cover"
               />

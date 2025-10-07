@@ -1,56 +1,11 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ExternalLink, Github } from 'lucide-react'
+import { useProjectsData } from '../hooks/useProjectsData'
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all')
-
-  const projects = [
-    {
-      id: 1,
-      title: 'Sistema PD',
-      description: 'Sistema de gestão desenvolvido com HTML, CSS e JavaScript para controle de dados.',
-      image: '/imagem/Sistema PD.png',
-      technologies: ['HTML', 'CSS', 'JavaScript'],
-      category: 'frontend',
-      github: 'https://github.com/JoaoVictorEffgen',
-      live: 'https://github.com/JoaoVictorEffgen',
-      featured: true
-    },
-    {
-      id: 2,
-      title: 'Quiz Saber',
-      description: 'Aplicativo de quiz interativo desenvolvido para testar conhecimentos.',
-      image: '/imagem/Quiz Saber.png',
-      technologies: ['HTML', 'CSS', 'JavaScript'],
-      category: 'frontend',
-      github: 'https://github.com/JoaoVictorEffgen',
-      live: 'https://github.com/JoaoVictorEffgen',
-      featured: true
-    },
-    {
-      id: 3,
-      title: 'App Mobile',
-      description: 'Aplicativo mobile desenvolvido com React Native para dispositivos móveis.',
-      image: '/imagem/App Mobile.png',
-      technologies: ['React Native', 'JavaScript'],
-      category: 'mobile',
-      github: 'https://github.com/JoaoVictorEffgen',
-      live: 'https://github.com/JoaoVictorEffgen',
-      featured: false
-    },
-    {
-      id: 4,
-      title: 'Site Institucional',
-      description: 'Site institucional responsivo desenvolvido com HTML, CSS e JavaScript.',
-      image: '/imagem/Site.png',
-      technologies: ['HTML', 'CSS', 'JavaScript'],
-      category: 'frontend',
-      github: 'https://github.com/JoaoVictorEffgen',
-      live: 'https://github.com/JoaoVictorEffgen',
-      featured: false
-    }
-  ]
+  const { projects, loading, error } = useProjectsData()
 
   const categories = [
     { id: 'all', name: 'Todos' },
@@ -103,12 +58,23 @@ const Projects = () => {
           ))}
         </motion.div>
 
-                 {/* Projects Grid */}
-         <motion.div
-           layout
-           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-         >
-           {filteredProjects.map((project, index) => (
+        {/* Projects Grid */}
+        {loading ? (
+          <div className="text-center text-gray-400">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mx-auto mb-4"></div>
+            Carregando projetos...
+          </div>
+        ) : error ? (
+          <div className="text-center text-red-400">
+            <p>Erro ao carregar projetos: {error}</p>
+            <p className="text-sm text-gray-400 mt-2">Usando dados padrão</p>
+          </div>
+        ) : (
+          <motion.div
+            layout
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            {filteredProjects.map((project, index) => (
              <motion.div
                key={project.id}
                layout
@@ -182,7 +148,8 @@ const Projects = () => {
                </div>
              </motion.div>
            ))}
-         </motion.div>
+          </motion.div>
+        )}
 
         {/* View More Button */}
         <motion.div
