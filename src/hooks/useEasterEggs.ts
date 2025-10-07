@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 // Declaração global para intervalos
 declare global {
   interface Window {
-    easterEggInterval?: NodeJS.Timeout | null;
+    easterEggInterval?: number | null;
   }
 }
 
@@ -71,7 +71,7 @@ export const useEasterEggs = () => {
   const [visitCount, setVisitCount] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [currentSequences, setCurrentSequences] = useState<{[key: string]: string[]}>({});
-  const [coffeeTapCount, setCoffeeTapCount] = useState(0);
+  const [_coffeeTapCount, setCoffeeTapCount] = useState(0);
 
   // Detectar mobile
   useEffect(() => {
@@ -217,33 +217,8 @@ export const useEasterEggs = () => {
     }
   };
 
-  const activateMatrixMode = () => {
-    document.body.classList.add('matrix-mode');
-    
-    // Criar overlay
-    const overlay = document.createElement('div');
-    overlay.className = 'easter-egg-overlay';
-    overlay.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, #000000, #001100, #000000);
-      z-index: 1000;
-      pointer-events: none;
-      opacity: 0.3;
-    `;
-    document.body.appendChild(overlay);
-    
-    // Criar chuva de caracteres
-    createMatrixRain();
-    
-    // Auto-clear após 10 segundos
-    setTimeout(() => {
-      clearPreviousEffects();
-    }, 10000);
-  };
+  // Removido - agora Konami Code ativa Snake Mode
+  // const activateMatrixMode = () => { ... };
 
   const activateDeveloperMode = () => {
     document.body.classList.add('developer-mode');
@@ -482,35 +457,8 @@ export const useEasterEggs = () => {
     }, duration);
   };
 
-  const createMatrixRain = () => {
-    const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-    
-    for (let i = 0; i < 50; i++) {
-      setTimeout(() => {
-        const rain = document.createElement('div');
-        rain.className = 'easter-egg-particle';
-        rain.style.cssText = `
-          position: fixed;
-          top: -50px;
-          left: ${Math.random() * window.innerWidth}px;
-          color: #00ff00;
-          font-family: 'Courier New', monospace;
-          font-size: 14px;
-          pointer-events: none;
-          z-index: 1001;
-          animation: matrix-fall 3s linear forwards;
-        `;
-        rain.textContent = characters[Math.floor(Math.random() * characters.length)];
-        document.body.appendChild(rain);
-        
-        setTimeout(() => {
-          if (document.body.contains(rain)) {
-            document.body.removeChild(rain);
-          }
-        }, 3000);
-      }, i * 100);
-    }
-  };
+  // Removido - não é mais usado (Matrix Mode foi substituído por Snake Mode)
+  // const createMatrixRain = () => { ... };
 
   const createDustParticle = () => {
     const particle = document.createElement('div');
@@ -661,7 +609,7 @@ export const useEasterEggs = () => {
       ];
       
       // Função para verificar se uma posição é segura
-      const isSafe = (x, y) => {
+      const isSafe = (x: number, y: number) => {
         if (x < 0 || x >= tileCount || y < 0 || y >= tileCountY) {
           return false;
         }
@@ -669,7 +617,7 @@ export const useEasterEggs = () => {
       };
       
       // Função para calcular quantas direções seguras existem a partir de uma posição
-      const getSafeDirectionsCount = (x, y) => {
+      const getSafeDirectionsCount = (x: number, y: number) => {
         return directions.filter(dir => isSafe(x + dir.dx, y + dir.dy)).length;
       };
       
