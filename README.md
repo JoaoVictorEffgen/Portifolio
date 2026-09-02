@@ -1,266 +1,59 @@
-# ✨ Portfólio Interativo
+# Portfólio — João Victor Effgen
 
-Um portfólio pessoal moderno e interativo com sistema de cores dinâmicas que mudam automaticamente! Inclui projetos reais como Jogo do Saber, Sistema de Padaria integrado, App Mobile e Site Empresarial.
+Site pessoal profissional de [João Victor Effgen](https://github.com/JoaoVictorEffgen). Os projetos públicos vêm direto da API do GitHub: quando um repositório novo é criado na conta, ele passa a aparecer na grade automaticamente.
 
-## ✨ Características
+## Como rodar
 
-- **✨ Cores Dinâmicas**: 6 esquemas de cores diferentes que mudam manualmente
-- **📱 Design Responsivo**: Funciona perfeitamente em todos os dispositivos
-- **🚀 Animações Suaves**: Transições e efeitos visuais elegantes
-- **🎯 Navegação Intuitiva**: Menu fixo com rolagem suave
-- **💫 Efeitos Interativos**: Efeito Typewriter, confetti e muito mais
-- **🎴 Flip Cards**: Cards interativos com hover (desktop) e toque (mobile)
-
-## ✨ Esquemas de Cores
-
-1. **Azul** (padrão) - #2563eb
-2. **Roxo** - #7c3aed
-3. **Verde** - #059669
-4. **Vermelho** - #dc2626
-5. **Laranja** - #ea580c
-6. **Teal** - #0d9488
-
-## 🎮 Como Usar
-
-### Mudança Manual de Cores
-- **Clique no logo** "Portfolio" no cabeçalho
-- **Pressione a barra de espaço**
-- **Use as setas do teclado** (← →)
-
-### Navegação
-- **Menu fixo** no topo para navegação rápida
-- **Rolagem suave** entre seções
-- **Barra de progresso** no topo da página
-
-## 🛠️ Personalização
-
-### 1. Informações Pessoais
-Edite o arquivo `index.html`:
-```html
-<!-- Seu nome -->
-<h1 class="hero-title">Olá, eu sou <span class="highlight">Seu Nome</span></h1>
-
-<!-- Sua profissão -->
-<p class="hero-subtitle">Desenvolvedor Full Stack & Designer</p>
-
-<!-- Suas habilidades já estão configuradas -->
-<span class="skill-tag">JavaScript</span>
-<span class="skill-tag">React</span>
-<span class="skill-tag">React Native</span>
-<span class="skill-tag">Node.js</span>
-<span class="skill-tag">HTML5/CSS3</span>
-<span class="skill-tag">MySQL</span>
-<span class="skill-tag">Expo</span>
-<span class="skill-tag">Bootstrap</span>
-<!-- Adicione mais habilidades se necessário -->
+```bash
+npm install
+npm run dev
 ```
 
-### 2. Projetos
-Seus projetos já estão configurados:
-- **🎮 Jogo do Saber** - Jogo educativo interativo
-- **🥖 Sistema de Padaria** - Sistema integrado mobile/web/desktop
-- **📱 App Mobile Simples** - Aplicação mobile básica
-- **🏢 Site Empresarial** - Website profissional
+O servidor sobe em [http://localhost:43217](http://localhost:43217).
 
-Para personalizar ainda mais:
-```html
-<div class="project-card">
-    <div class="project-image">
-        <div class="project-placeholder">📱</div>
-    </div>
-    <div class="project-content">
-        <h3>Nome do Seu Projeto</h3>
-        <p>Descrição do projeto</p>
-        <div class="project-tech">
-            <span>Tecnologia 1</span>
-            <span>Tecnologia 2</span>
-        </div>
-        <div class="project-links">
-            <a href="#" class="project-link">Demo</a>
-            <a href="#" class="project-link">GitHub</a>
-        </div>
-    </div>
-</div>
+Para produção:
+
+```bash
+npm run build
+npm start -- --port 43217
 ```
 
-### 3. Estatísticas
-Atualize suas estatísticas:
-```html
-<div class="stat-item">
-    <div class="stat-number">5+</div>
-    <div class="stat-label">Anos de Experiência</div>
-</div>
+## Ligação com o GitHub
+
+O site consulta `https://api.github.com/users/JoaoVictorEffgen/repos` a cada 5 minutos. Não é preciso editar o código para publicar um projeto novo.
+
+O que entra na lista:
+
+- repositórios **públicos** da conta
+- que **não** sejam forks
+- que **não** tenham o tópico `hide-from-portfolio`
+- o repositório de perfil (`JoaoVictorEffgen`) e o portfólio antigo (`Portifolio`) ficam de fora — este site passa a ser a vitrine
+
+O que ajuda o card a ficar completo:
+
+- descrição no repositório
+- linguagem detectada pelo GitHub
+- GitHub Pages ou o campo **About → Website** (vira o botão Demo)
+- tópico `portfolio` (marca o card como destaque)
+
+Destaques atuais configurados em `lib/site.ts`: Nexo, SaaS, Padaria e VSC.
+
+Para apontar para outra conta, altere `githubUsername` em `lib/site.ts` ou defina:
+
+```bash
+GITHUB_USERNAME=JoaoVictorEffgen
 ```
 
-### 4. Contato e Redes Sociais
-**Método Fácil:** Edite o arquivo `config.js`:
-```javascript
-const PORTFOLIO_CONFIG = {
-    personal: {
-        name: "João Victor Effgen",
-        email: "joaoeffgens@gmail.com"
-    },
-    contact: {
-        whatsapp: {
-            number: "27995187615", // Seu número (apenas números)
-            message: "Olá! Vi seu portfólio e gostaria de conversar sobre um projeto."
-        },
-        instagram: "joaoeffgen", // Sem @
-        github: "JoaoVictorEffgen",
-        linkedin: "joao-victor-effgen-84888b239"
-    }
-};
+Se o GitHub limitar as consultas, use um token só de leitura em `.env.local`:
+
+```bash
+GITHUB_TOKEN=ghp_...
 ```
 
-**Links Reais Configurados:**
-- **WhatsApp:** +55 (27) 99518-7615
-- **Instagram:** [@joaoeffgen](https://www.instagram.com/joaoeffgen/)
-- **GitHub:** [JoaoVictorEffgen](https://github.com/JoaoVictorEffgen)
-- **LinkedIn:** [João Victor Effgen](https://www.linkedin.com/in/joao-victor-effgen-84888b239/)
+## Conteúdo editável
 
-**Método Manual:** Atualize diretamente no HTML:
-```html
-<div class="contact-method">
-    <span class="contact-icon">📧</span>
-    <span>seu.email@exemplo.com</span>
-</div>
-<div class="contact-method">
-    <span class="contact-icon">📱</span>
-    <span>+55 (11) 99999-9999</span>
-</div>
-```
+Identidade, texto, foto, e-mail e redes ficam em `lib/site.ts`. A ilustração atual é `public/foto-perfil.png`.
 
-### 5. Cores Personalizadas
-Para adicionar novos esquemas de cores, edite o arquivo `script.js`:
-```javascript
-const colorSchemes = [
-    // ... esquemas existentes ...
-    {
-        name: 'Sua Cor',
-        primary: '#sua-cor-primaria',
-        secondary: '#sua-cor-secundaria',
-        accent: '#sua-cor-accent',
-        background: '#sua-cor-background',
-        surface: '#sua-cor-surface',
-        textPrimary: '#sua-cor-texto-principal',
-        textSecondary: '#sua-cor-texto-secundario',
-        border: '#sua-cor-borda',
-        shadow: 'rgba(sua-cor-sombra, 0.1)',
-        gradientStart: '#sua-cor-gradiente-inicio',
-        gradientEnd: '#sua-cor-gradiente-fim'
-    }
-];
-```
+## Deploy
 
-## 📁 Estrutura do Projeto
-
-```
-portifolio/
-├── index.html          # Estrutura HTML principal
-├── styles.css          # Estilos CSS com variáveis dinâmicas
-├── script.js           # JavaScript com funcionalidades interativas
-└── README.md           # Este arquivo
-```
-
-## 🚀 Como Executar
-
-1. **Clone ou baixe** os arquivos para sua pasta
-2. **Abra o arquivo** `index.html` em qualquer navegador moderno
-3. **Pronto!** Seu portfólio está funcionando
-
-## 🌐 Hospedagem
-
-Para publicar online, você pode usar:
-- **GitHub Pages** (gratuito)
-- **Netlify** (gratuito)
-- **Vercel** (gratuito)
-- **Qualquer servidor web**
-
-## 🎯 Funcionalidades Avançadas
-
-### 📱 **Links Diretos de Contato**
-- **WhatsApp:** Link direto para conversa com mensagem personalizada
-- **Instagram:** Acesso direto ao seu perfil
-- **GitHub:** Link para seus repositórios
-- **LinkedIn:** Perfil profissional
-- **Email:** Contato direto por email
-
-### ✨ **Ícones das Redes Sociais**
-- **Ícones oficiais** do Font Awesome
-- **Cores autênticas** de cada plataforma
-- **Efeitos hover** com animações suaves
-- **Seção dedicada** na área de contato
-
-### 🔗 **Como Funcionam os Links:**
-- **WhatsApp:** Abre o app/WhatsApp Web com mensagem pré-definida
-- **Instagram:** Abre seu perfil no Instagram
-- **Todos os links** abrem em nova aba para não perder o portfólio
-
-- **Efeito Typewriter** para o título principal
-- **Efeito confetti** ao mudar cores
-- **Animações de scroll** para elementos
-- **Efeitos de hover** em todos os elementos interativos
-- **Formulário de contato** funcional com validação
-- **Atalhos de teclado** para navegação
-- **Barra de progresso** de scroll
-- **Flip Cards** interativos para habilidades
-
-## 🔧 Tecnologias Utilizadas
-
-- **HTML5** - Estrutura semântica
-- **CSS3** - Estilos modernos com variáveis CSS
-- **JavaScript ES6+** - Funcionalidades interativas
-- **Google Fonts** - Tipografia Inter
-- **CSS Grid & Flexbox** - Layout responsivo
-
-## 📱 Responsividade
-
-O portfólio é totalmente responsivo e funciona em:
-- 📱 Smartphones
-- 📱 Tablets
-- 💻 Desktops
-- 🖥️ Monitores grandes
-
-## ✨ Personalização Avançada
-
-### Adicionar Novas Seções
-```html
-<section id="nova-secao" class="nova-secao">
-    <h2 class="section-title">Nova Seção</h2>
-    <div class="container">
-        <!-- Conteúdo da nova seção -->
-    </div>
-</section>
-```
-
-### Estilos CSS Personalizados
-```css
-.nova-secao {
-    padding: 80px 0;
-    background: var(--surface-color);
-}
-
-.nova-secao .section-title {
-    color: var(--text-primary);
-}
-```
-
-## 🚀 Próximos Passos
-
-1. **Personalize** suas informações
-2. **Adicione** seus projetos reais
-3. **Atualize** suas habilidades
-4. **Configure** suas informações de contato
-5. **Teste** em diferentes dispositivos
-6. **Publique** online
-
-## 📞 Suporte
-
-Se precisar de ajuda para personalizar:
-1. Verifique se todos os arquivos estão na mesma pasta
-2. Certifique-se de que está usando um navegador moderno
-3. Verifique o console do navegador para possíveis erros
-
----
-
-**🎉 Seu portfólio interativo está pronto para impressionar!** 
+Publique este repositório na Vercel. Cada push atualiza o site, e o fetch do GitHub continua preenchendo os projetos.
