@@ -52,7 +52,7 @@ GITHUB_TOKEN=ghp_...
 
 ## Conteúdo editável
 
-Identidade, texto, foto, e-mail e redes ficam em `lib/site.ts`. A ilustração atual é `public/foto-perfil.png`.
+Identidade, texto, e-mail e redes ficam em `lib/site.ts`.
 
 ## Deploy
 

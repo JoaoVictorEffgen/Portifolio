@@ -10,7 +10,6 @@ export const site = {
   ],
   location: "Espírito Santo, Brasil",
   githubUsername: process.env.GITHUB_USERNAME ?? "JoaoVictorEffgen",
-  photo: "/foto-perfil.png",
   email: "joaoeffgens@gmail.com",
   whatsapp: "5527995187615",
   socials: {
