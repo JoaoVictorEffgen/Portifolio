@@ -23,7 +23,7 @@ export type Project = {
   topics: string[]
   updatedAt: string
   createdAt: string
-  image: string
+  image: string | null
   featured: boolean
 }
 
@@ -79,10 +79,6 @@ const GITHUB_HEADERS: HeadersInit = {
     : {}),
 }
 
-function githubImage(fullName: string) {
-  return `https://opengraph.githubassets.com/1/${fullName}`
-}
-
 function githubPagesUrl(repoName: string) {
   return `https://${site.githubUsername.toLowerCase()}.github.io/${repoName}/`
 }
@@ -112,7 +108,7 @@ function mapRepo(repo: GithubRepoResponse): Project {
     topics,
     updatedAt: repo.updated_at,
     createdAt: repo.created_at,
-    image: site.projectImages[repo.name] ?? githubImage(repo.full_name),
+    image: site.projectImages[repo.name] ?? null,
     featured:
       topics.includes("portfolio") ||
       (site.featuredRepos as readonly string[]).includes(repo.name),

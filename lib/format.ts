@@ -44,3 +44,22 @@ export function prettyRepoName(name: string) {
     .replace(/[-_]+/g, " ")
     .replace(/\b\w/g, (letter) => letter.toUpperCase())
 }
+
+export function languageAccent(language: string | null) {
+  switch (language) {
+    case "JavaScript":
+      return { from: "#f7df1e", to: "#2767bb" }
+    case "TypeScript":
+      return { from: "#3178c6", to: "#0d47a1" }
+    case "Python":
+      return { from: "#3776ab", to: "#ffd43b" }
+    case "HTML":
+      return { from: "#e34f26", to: "#273c75" }
+    case "CSS":
+      return { from: "#1572b6", to: "#f1c40f" }
+    case "Dart":
+      return { from: "#0175c2", to: "#13b9fd" }
+    default:
+      return { from: "#2767bb", to: "#f1c40f" }
+  }
+}
